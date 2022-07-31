@@ -1,13 +1,32 @@
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from "framer-motion"
+
+
+const menuItems = ['Magamról', 'Hobbik', 'Skills', 'Célok', 'Projektek'];
+
 
 export const Navtigation = () => {
 
-    const [clickOnMenu, setClick] = useState(false)
+    const navRef = useRef(null);
+    
+    //ezt lehet ki kell szervezni
+    const onResize = () => {
+        setIsColumn(window.innerWidth <= 715)
+    }
 
-    const click = () => {
-        setClick(true)
+
+    const [clickOnMenu, setClick] = useState(false);
+    const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
+    const [isColumn, setIsColumn] = useState(window.innerWidth <= 715);
+
+
+    const click = (e) => {
+        
+        const copy = [...itemtransition]
+        const index = e.target.id;
+        setTransition(copy.map( (e,i) => (Math.abs(index - i) + 1) / 10))
+        setTimeout(() => setClick(true), 50);
     }
 
     const headers = {
@@ -42,47 +61,33 @@ export const Navtigation = () => {
 
     useEffect(() => {
         //console.log(getRepos().then((data) => console.log(data)));
-        getRepos();
+        //getRepos();
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
     }, [])
+
+    const animate = { y: 0, opacity: 1 };
+    const initial = { y: 1000, opacity: 0 };
+    const exit = { y: -1000, opacity: 0 };
 
     return (
         <>
             <AnimatePresence>
-
-
                 {!clickOnMenu &&
-                    <Nav>
-                        <Item animate={{ y: 0, opacity: 1 }}
-                            initial={{ y: 1000, opacity: 0 }}
-                            exit={{ y: -1000, opacity: 0 }}
-                            transition={{ delay: 0.1 }}
-                            onClick={click}>
-                            Magamról
-                        </Item>
-                        <Item animate={{ y: 0, opacity: 1 }}
-                            initial={{ y: 1000, opacity: 0 }}
-                            exit={{ y: -1000, opacity: 0 }}
-                            transition={{ delay: 0.2 }} onClick={click}>
-                            Hobbik
-                        </Item>
-                        <Item animate={{ y: 0, opacity: 1 }}
-                            initial={{ y: 1000, opacity: 0 }}
-                            exit={{ y: -1000, opacity: 0 }}
-                            transition={{ delay: 0.3 }} onClick={click}>
-                            Skills
-                        </Item>
-                        <Item animate={{ y: 0, opacity: 1 }}
-                            initial={{ y: 1000, opacity: 0 }}
-                            exit={{ y: -1000, opacity: 0 }}
-                            transition={{ delay: 0.4 }} onClick={click}>
-                            Célok
-                        </Item>
-                        <Item animate={{ y: 0, opacity: 1 }}
-                            initial={{ y: 1000, opacity: 0 }}
-                            exit={{ y: -1000, opacity: 0 }}
-                            transition={{ delay: 0.5 }} onClick={click}>
-                            Projektek
-                        </Item>
+                    <Nav ref={navRef}>
+                        {menuItems.map((e,i) => {
+                            return (
+                                <Item 
+                                    id={i}
+                                    key={e}
+                                    animate={{ x: 0, y: 0, opacity: 1, transition: { delay: (i+1) / 10} }}
+                                    initial={{ x: isColumn ? 1000 : 0, y: isColumn ? 0 : 1000, opacity: 0, }}
+                                    exit={{ x: isColumn ? -1000 : 0, y: isColumn ? 0 : -1000, opacity: 0, transition: { delay: itemtransition[i] } }}
+                                    onClick={click}>
+                                    {e}
+                                </Item>
+                            )
+                        })}
                     </Nav>
                 }
             </AnimatePresence>
@@ -92,6 +97,42 @@ export const Navtigation = () => {
         </>
     )
 }
+
+/**
+ * 
+ * <Item animate={{ y: 0, opacity: 1, transition: { delay: itemtransition['aboutMe'] } }}
+                            initial={{ y: 1000, opacity: 0,  }}
+                            exit={{ y: -1000, opacity: 0, transition: { delay: 0.1 } }}
+                            
+                            onClick={click}>
+                            Magamról
+                        </Item>
+                        <Item animate={{ y: 0, opacity: 1, transition: { delay: itemtransition['hobbies'] } }}
+                            initial={{ y: 1000, opacity: 0, }}
+                            exit={{ y: -1000, opacity: 0, transition: { delay: 0.2 }  }}
+                            onClick={click}>
+                            Hobbik
+                        </Item>
+                        <Item animate={{ y: 0, opacity: 1, transition:{ delay: itemtransition['skills'] } }}
+                            initial={{ y: 1000, opacity: 0 }}
+                            exit={{ y: -1000, opacity: 0, transition:{ delay: 0.3 } }}
+                            onClick={click}>
+                            Skills
+                        </Item>
+                        <Item animate={{ y: 0, opacity: 1, transition:{ delay: itemtransition['goals'] } }}
+                            initial={{ y: 1000, opacity: 0 }}
+                            exit={{ y: -1000, opacity: 0, transition:{ delay: 0.4 } }}
+                            onClick={click}>
+                            Célok
+                        </Item>
+                        <Item animate={{ y: 0, opacity: 1, transition:{ delay: itemtransition['references'] } }}
+                            initial={{ y: 1000, opacity: 0 }}
+                            exit={{ y: -1000, opacity: 0, transition:{ delay: 0.5 } }}
+                            onClick={click}>
+                            Projektek
+                        </Item>
+ * 
+ */
 
 const Nav = styled(motion.nav)`
     display: flex;
@@ -120,8 +161,7 @@ const Item = styled(motion.div)`
 
     &:hover{
         cursor: pointer;
-        color: #8E3200;
-
+        
         &:after{
             width: 100%;
         }
@@ -134,7 +174,7 @@ const Item = styled(motion.div)`
     &:after{
         content:'';
         position: absolute;
-        height: 5px;
+        height: var(--lh);
         width: 0%;
         background: #8E3200;
         left: 0;
@@ -150,7 +190,7 @@ const Item = styled(motion.div)`
     &:before{
         content:'';
         position: absolute;
-        height: 5px;
+        height: var(--lh);
         width: 0%;
         background: #8E3200;
         right: 0;
