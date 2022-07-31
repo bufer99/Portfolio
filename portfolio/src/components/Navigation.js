@@ -75,7 +75,7 @@ export const Navtigation = () => {
                             initial={{ y: 1000, opacity: 0 }}
                             exit={{ y: -1000, opacity: 0 }}
                             transition={{ delay: 0.4 }} onClick={click}>
-                            célok
+                            Célok
                         </Item>
                         <Item animate={{ y: 0, opacity: 1 }}
                             initial={{ y: 1000, opacity: 0 }}
