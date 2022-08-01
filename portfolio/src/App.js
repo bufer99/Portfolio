@@ -1,22 +1,34 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import styled from 'styled-components'
-import { Navtigation } from './components/Navigation';
+import { Navigation } from './components/Navigation';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation
+} from 'react-router-dom';
+import { References } from './components/References';
+import { motion, AnimatePresence } from "framer-motion"
 
 
 export default function App() {
+  const location = useLocation();
 
   return (
-    <Home>
-      <Navtigation />
-    </Home>
+    
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.key}>
+          <Route path="/" element={<Navigation />} />
+          <Route path="/aboutMe" element={<Navigation />} />
+          <Route path="/hobbies" element={<Navigation />} />
+          <Route path="/skills" element={<Navigation />} />
+          <Route path="/goals" element={<Navigation />} />
+          <Route path="/references" element={<References />} />
+
+        </Routes>
+      </AnimatePresence>
+
   )
 }
 
-const Home = styled.div`
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
