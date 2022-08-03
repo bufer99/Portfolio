@@ -28,11 +28,14 @@ export const Navigation = () => {
 
     const click = (e) => {
         const copy = [...itemtransition]
-        const index = e.target.id;
+        const index = e.target.closest('div').id;
         setTransition(copy.map((e, i) => (Math.abs(index - i) + 1) / 10))
         setTimeout(() => setClick(true), 50);
     }
 
+    useEffect(() => {
+        //console.log(itemtransition)
+    },[itemtransition])
     
     useEffect(() => {
         window.addEventListener('resize', onResize);

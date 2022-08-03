@@ -9,13 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
 
     const { html_url, name, language, id } = repo;
-    console.log(activeId, id, activeId === id)
+    //console.log(activeId, id, activeId === id)
 
 
     const getReadMe = async () => {
         await fetch(`https://api.github.com/repos/bufer99/${name}/readme`)
             .then(response => response.json())
-            .then(data => console.log(atob(data.content)))
+            .then(data => atob(data.content))
     }
 
     //getReadMe();

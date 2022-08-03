@@ -26,7 +26,7 @@ export const References = () => {
     }, [])
 
     useEffect(() => {
-        console.log(repos)
+        //console.log(repos)
     }, [repos])
 
     if (repos === null) {
