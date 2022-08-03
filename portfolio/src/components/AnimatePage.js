@@ -23,5 +23,5 @@ export const AnimatedPage = ({children}) => {
 
 const Wrapper = styled(motion.div)`
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
 `

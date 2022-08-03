@@ -11,6 +11,7 @@ export const References = () => {
 
     const navigate = useNavigate();
     const [repos, setRepos] = useState(null)
+    const [activeId, setActiveId] = useState(null);
 
     const getRepos = async () => {
         await fetch("https://api.github.com/users/bufer99/repos")
@@ -35,11 +36,13 @@ export const References = () => {
     return (
         <AnimatedPage>
             <Wrapper>
-                <HomeIconContainer
-                    whileHover={{ scale: 1.1, rotate: [null, -10, 10, 0] }}
-                    onClick={() => navigate("/")}
-                >
-                    <HomeIcon sx={{ fontSize: 80 }} />
+                <HomeIconContainer>
+                    <motion.div
+                        whileHover={{ scale: 1.1, rotate: [null, -10, 10, 0], cursor: 'pointer' }}
+                        onClick={() => navigate("/")}
+                    >
+                        <HomeIcon sx={{ fontSize: 80 }} />
+                    </motion.div>
                 </HomeIconContainer>
                 <Content>
                     <GridContainer>
@@ -47,7 +50,9 @@ export const References = () => {
                             {repos.map((repo) => {
                                 return (
                                     <RepositoryItem
-                                        
+                                        key={repo.id}
+                                        activeId={activeId}
+                                        setActiveId={setActiveId}
                                         repo={repo}
                                     />
                                 )
@@ -63,28 +68,22 @@ export const References = () => {
 const GridContainer = styled.div`
     max-width: 1200px;
     min-width: 100px;
-    width: 100%;
-
+    width: 80%;
 `
 
-const Content = styled.div`
-    height: 100%;   
+const Content = styled.div`  
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
-const HomeIconContainer = styled(motion.div)`
-    position: absolute;
-    cursor: pointer;
-    left: 10px;
-    top: 10px;
+const HomeIconContainer = styled.div`
+    display: flex;
 `
 
 
 const Wrapper = styled.div`
     height: 100%;
-    overflow: hidden;
 `
 
 const Grid = styled.div`
@@ -94,5 +93,5 @@ const Grid = styled.div`
 
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: 1fr;
-    gap: 5px;
+    gap: 10px;
 `

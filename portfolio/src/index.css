@@ -14,13 +14,15 @@ html, body, #root {
   --fs-m: 1rem;
 
   --lh: 5px;
+
+  --ge-xl: 6rem;
 }
 
 @media screen and (max-width: 1075px) {
   :root {
     --fs-xxl: 2rem;
     --fs-xl: 1.5rem;
-    --fs-l: 1rem;
+    --fs-l: 1.2rem;
     --fs-m: .8rem;
 
     --lh: 3px;
@@ -31,7 +33,7 @@ html, body, #root {
   :root {
     --fs-xxl: 1.5rem;
     --fs-xl: 1.2rem;
-    --fs-l: .8rem;
+    --fs-l: 1rem;
     --fs-m: .5rem;
 
     --lh: 2px;
