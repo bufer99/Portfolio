@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #F5E8C7;
+  background-color: var(--theme);
 }
 
 html, body, #root {
@@ -16,6 +16,9 @@ html, body, #root {
   --lh: 5px;
 
   --ge-xl: 6rem;
+
+  --theme: #A2D2FF;
+  --lines: #1C6DD0;
 }
 
 @media screen and (max-width: 1075px) {

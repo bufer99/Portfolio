@@ -7,7 +7,7 @@ export const SkillBar = ({ value, max }) => {
         <Container max={`${max*10}%`}>
             <AnimatePresence>
                 <Bar
-                    animate={{ width: 'auto' }}
+                    animate={{ width: `${value*10}%`}}
                     initial={{ width: '5%' }}
                     transition={{ duration: 2 }}
 
@@ -24,16 +24,15 @@ const Container = styled(motion.div)`
     overflow: hidden;
     width: ${(props) => props.max};
     height: 50px;
-    border: 1px black solid;
-    padding: 2px 2px 2px 0;
+    border: 2px var(--lines) solid;
+    padding: 0px 0px 0px 0;
     border-radius: 0 110px 110px 0;
 `
 
 const Bar = styled(motion.div)`
     display: flex;
     gap:-10px;
-    width: ${(props) => props.value};
     height: 100%;
-    background: #8E3200;
+    background: var(--lines);
     border-radius: 0 110px 110px 0;
 `

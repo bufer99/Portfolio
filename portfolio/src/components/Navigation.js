@@ -126,7 +126,7 @@ const Item = styled(motion.div)`
         position: absolute;
         height: var(--lh);
         width: 0%;
-        background: #8E3200;
+        background: var(--lines);
         left: 0;
         top: 100%;
 
@@ -142,7 +142,7 @@ const Item = styled(motion.div)`
         position: absolute;
         height: var(--lh);
         width: 0%;
-        background: #8E3200;
+        background: var(--lines);
         right: 0;
 
         -o-transition:.5s;

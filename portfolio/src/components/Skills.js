@@ -6,9 +6,13 @@ export const Skills = () => {
     return (
         <AnimatedPage>
             <Content>
-                <SkillBar value={10} max={10} />
+                <SkillBar value={8} max={8} />
                 <br />
-                <SkillBar value={3} max={8} />
+                <SkillBar value={7} max={8} />
+                <br/>
+                <SkillBar value={6} max={8} />
+                <br />
+                <SkillBar value={5} max={8} />
                 html_urlCSS
                 JS E6
                 React
@@ -27,3 +31,9 @@ const Content = styled.div`
     align-items: center;
     justify-content: center;
 `
+
+
+/*
+    wrappert megcsinálni mint az animatedPaget
+    
+*/
