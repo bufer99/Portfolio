@@ -8,46 +8,33 @@ import cssLogo from '../media/css3.svg';
 import gitLogo from '../media/git.svg';
 import htmlLogo from '../media/html5.svg';
 import reduxLogo from '../media/redux.svg';
-import HomeIcon from '@mui/icons-material/Home';
-import { motion } from "framer-motion";
+import { Wrapper } from "./Wrapper";
 import { useNavigate } from "react-router-dom";
 
 export const Skills = () => {
 
-    const navigate = useNavigate();
-
     return (
         <AnimatedPage>
-            <HomeIconContainer>
-                <motion.div
-                    whileHover={{ scale: 1.1, rotate: [null, -10, 10, 0], cursor: 'pointer' }}
-                    onClick={() => navigate("/")}
-                >
-                    <HomeIcon sx={{ fontSize: 80 }} />
-                </motion.div>
-            </HomeIconContainer>
-            <Content>
-                <SkillBar img={reduxLogo} value={6} max={10} />
+            <Wrapper>
+                <Content>
+                    <SkillBar img={reduxLogo} value={6} max={10} />
 
-                <SkillBar img={gitLogo} value={6} max={10} />
+                    <SkillBar img={gitLogo} value={6} max={10} />
 
-                <SkillBar img={jsLogo} value={8.5} max={10} />
+                    <SkillBar img={jsLogo} value={8.5} max={10} />
 
-                <SkillBar img={htmlLogo} value={7} max={10} />
+                    <SkillBar img={htmlLogo} value={7} max={10} />
 
-                <SkillBar img={cssLogo} value={7} max={10} />
+                    <SkillBar img={cssLogo} value={7} max={10} />
 
-                <SkillBar img={dataBaseLogo} value={6} max={10} />
+                    <SkillBar img={dataBaseLogo} value={6} max={10} />
 
-                <SkillBar img={reactLogo} value={8.5} max={10} />
-            </Content>
+                    <SkillBar img={reactLogo} value={8.5} max={10} />
+                </Content>
+            </Wrapper>
         </AnimatedPage>
     )
 }
-
-const HomeIconContainer = styled.div`
-    display: flex;
-`
 
 const Content = styled.div`
     width: 80%;
