@@ -149,6 +149,6 @@ const Item = styled(motion.div)`
         -ms-transition:.5s;
         -moz-transition:.5s;
         -webkit-transition:.5s;
-        transition:.5s;
+        transition: .5s;
     }
 `
