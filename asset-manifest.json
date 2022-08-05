@@ -1,8 +1,14 @@
 {
   "files": {
-    "main.css": "/portfolio-react/static/css/main.9588c378.css",
-    "main.js": "/portfolio-react/static/js/main.a163e761.js",
+    "main.css": "/portfolio-react/static/css/main.fe949f6d.css",
+    "main.js": "/portfolio-react/static/js/main.3cec073c.js",
+    "static/media/taskList-react.PNG": "/portfolio-react/static/media/taskList-react.ea47e3f1430b75318fb9.PNG",
     "static/media/coolvetica.rg-regular.otf": "/portfolio-react/static/media/coolvetica.rg-regular.3d81d0e1fdbd5f69b232.otf",
+    "static/media/tictactoe.PNG": "/portfolio-react/static/media/tictactoe.c24830279c920c26979f.PNG",
+    "static/media/set-game.PNG": "/portfolio-react/static/media/set-game.49ad4e854a22b70a09c0.PNG",
+    "static/media/portfolio.PNG": "/portfolio-react/static/media/portfolio.3cdfbcccab8e8f42bead.PNG",
+    "static/media/formComponent-react.PNG": "/portfolio-react/static/media/formComponent-react.3706eb51a5a7549dbf34.PNG",
+    "static/media/interactive-rating-component-react.PNG": "/portfolio-react/static/media/interactive-rating-component-react.5bf5ae08e1dbba71e66e.PNG",
     "static/media/react.svg": "/portfolio-react/static/media/react.a8685967057e839ec3be696bbba4505b.svg",
     "static/media/redux.svg": "/portfolio-react/static/media/redux.fdb10a7d79a3875a139cabeb000f34e5.svg",
     "static/media/js.svg": "/portfolio-react/static/media/js.de4c2594613e34b15666206bbede7327.svg",
@@ -13,11 +19,13 @@
     "static/media/css3.svg": "/portfolio-react/static/media/css3.0b861a4157efa9982133a9b7fe2075a7.svg",
     "static/media/database.svg": "/portfolio-react/static/media/database.dd3666df09174cb4c3e1351842feab6a.svg",
     "static/media/external.svg": "/portfolio-react/static/media/external.4372e0cc64cd7b71df5563aab0f050c5.svg",
-    "main.9588c378.css.map": "/portfolio-react/static/css/main.9588c378.css.map",
-    "main.a163e761.js.map": "/portfolio-react/static/js/main.a163e761.js.map"
+    "static/media/hungary.svg": "/portfolio-react/static/media/hungary.82fd09978a83d548d419d1e040871e96.svg",
+    "static/media/england.svg": "/portfolio-react/static/media/england.74c2fc099e753db6057eaabbd9e3af1c.svg",
+    "main.fe949f6d.css.map": "/portfolio-react/static/css/main.fe949f6d.css.map",
+    "main.3cec073c.js.map": "/portfolio-react/static/js/main.3cec073c.js.map"
   },
   "entrypoints": [
-    "static/css/main.9588c378.css",
-    "static/js/main.a163e761.js"
+    "static/css/main.fe949f6d.css",
+    "static/js/main.3cec073c.js"
   ]
 }
