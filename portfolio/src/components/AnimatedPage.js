@@ -5,7 +5,11 @@ const animations = {
     animate: { opacity: 1, transition: { delay: 0}},
     initial: { opacity: 0 },
     exit: { opacity: 0, transition: { delay: 0} }
-}
+}   
+
+const navHeight = document.querySelector('nav')
+
+console.log(navHeight)
 
 export const AnimatedPage = ({children}) => {
     return (
@@ -22,6 +26,10 @@ export const AnimatedPage = ({children}) => {
 
 
 const Wrapper = styled(motion.div)`
-    height: 100%;
+    grid-row: 2;
+    grid-column: 2;
     overflow: visible;
+    display: flex;
+    justify-content: center;
+    max-width: 1600px;
 `

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { AnimatedPage } from './AnimatePage';
+import { AnimatedPage } from './AnimatedPage';
 import { useState } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 import { Wrapper } from "./Wrapper";
@@ -31,8 +31,6 @@ export const References = () => {
     }
 
     return (
-        <AnimatedPage>
-            <Wrapper>
                 <Content>
                     <Grid>
                         {repos.map((repo) => {
@@ -47,17 +45,15 @@ export const References = () => {
                         })}
                     </Grid>
                 </Content>
-            </Wrapper>
-        </AnimatedPage>
     )
 }
 
 const Content = styled.div`
-    width: 80%;
+    width: 100%;
 `
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
     gap: 10px;
 `

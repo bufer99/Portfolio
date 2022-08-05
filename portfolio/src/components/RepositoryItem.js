@@ -36,9 +36,9 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
 
                 {!activeId || activeId !== id ?
                     <Content
-                        animate={{ x: 0, opacity: 1 }}
-                        initial={{ x: 200, opacity: 0, }}
-                        exit={{ x: -200, opacity: 0, }}
+                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, }}
+                        exit={{ opacity: 0, }}
                         key='cover'
                     >
                         <Title>
@@ -62,9 +62,9 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
                     :
 
                     <Content
-                        animate={{ x: 0, opacity: 1 }}
-                        initial={{ x: 200, opacity: 0, }}
-                        exit={{ x: -200, opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, }}
+                        exit={{ opacity: 0 }}
                         key='description'
                     >
                         <ScreenShot src={screenshots.find(e => e.includes(name))} />
@@ -123,5 +123,7 @@ const Wrapper = styled(motion.div)`
                 border: 2px gray solid;
                 border-radius: 5px;
                 overflow: hidden;
+                justify-self: center;
+                width: fill-available;
                 `
 
