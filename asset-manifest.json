@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/portfolio-react/static/css/main.fe949f6d.css",
-    "main.js": "/portfolio-react/static/js/main.95aa6e34.js",
+    "main.css": "/portfolio-react/static/css/main.d31f755a.css",
+    "main.js": "/portfolio-react/static/js/main.9f2b5dda.js",
     "static/media/taskList-react.PNG": "/portfolio-react/static/media/taskList-react.ea47e3f1430b75318fb9.PNG",
     "static/media/coolvetica.rg-regular.otf": "/portfolio-react/static/media/coolvetica.rg-regular.3d81d0e1fdbd5f69b232.otf",
     "static/media/tictactoe.PNG": "/portfolio-react/static/media/tictactoe.c24830279c920c26979f.PNG",
     "static/media/set-game.PNG": "/portfolio-react/static/media/set-game.49ad4e854a22b70a09c0.PNG",
+    "static/media/DMMono-Regular.ttf": "/portfolio-react/static/media/DMMono-Regular.15edd89a6460acfb1a86.ttf",
     "static/media/portfolio.PNG": "/portfolio-react/static/media/portfolio.3cdfbcccab8e8f42bead.PNG",
     "static/media/formComponent-react.PNG": "/portfolio-react/static/media/formComponent-react.3706eb51a5a7549dbf34.PNG",
     "static/media/interactive-rating-component-react.PNG": "/portfolio-react/static/media/interactive-rating-component-react.5bf5ae08e1dbba71e66e.PNG",
+    "static/media/guitar.svg": "/portfolio-react/static/media/guitar.b3580fb10baa97e42e8e8c71c77848f1.svg",
     "static/media/react.svg": "/portfolio-react/static/media/react.a8685967057e839ec3be696bbba4505b.svg",
+    "static/media/goal-list.svg": "/portfolio-react/static/media/goal-list.7fe1f5842144f2aaa22c9b975205dc10.svg",
     "static/media/redux.svg": "/portfolio-react/static/media/redux.fdb10a7d79a3875a139cabeb000f34e5.svg",
+    "static/media/projects.svg": "/portfolio-react/static/media/projects.061f9c42d90793c3d6423ea73c806382.svg",
     "static/media/js.svg": "/portfolio-react/static/media/js.de4c2594613e34b15666206bbede7327.svg",
     "static/media/git.svg": "/portfolio-react/static/media/git.39981ba995e92827ec1918dae02c92f7.svg",
     "static/media/github.svg": "/portfolio-react/static/media/github.416e8876708c567f0bef38fa7655a671.svg",
@@ -18,14 +22,15 @@
     "index.html": "/portfolio-react/index.html",
     "static/media/css3.svg": "/portfolio-react/static/media/css3.0b861a4157efa9982133a9b7fe2075a7.svg",
     "static/media/database.svg": "/portfolio-react/static/media/database.dd3666df09174cb4c3e1351842feab6a.svg",
+    "static/media/profile.svg": "/portfolio-react/static/media/profile.376e60e905bfa278d1fb5e13dd702e4e.svg",
     "static/media/external.svg": "/portfolio-react/static/media/external.4372e0cc64cd7b71df5563aab0f050c5.svg",
     "static/media/hungary.svg": "/portfolio-react/static/media/hungary.82fd09978a83d548d419d1e040871e96.svg",
     "static/media/england.svg": "/portfolio-react/static/media/england.74c2fc099e753db6057eaabbd9e3af1c.svg",
-    "main.fe949f6d.css.map": "/portfolio-react/static/css/main.fe949f6d.css.map",
-    "main.95aa6e34.js.map": "/portfolio-react/static/js/main.95aa6e34.js.map"
+    "main.d31f755a.css.map": "/portfolio-react/static/css/main.d31f755a.css.map",
+    "main.9f2b5dda.js.map": "/portfolio-react/static/js/main.9f2b5dda.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe949f6d.css",
-    "static/js/main.95aa6e34.js"
+    "static/css/main.d31f755a.css",
+    "static/js/main.9f2b5dda.js"
   ]
 }
