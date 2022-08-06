@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio-react/static/css/main.fe949f6d.css",
-    "main.js": "/portfolio-react/static/js/main.3cec073c.js",
+    "main.js": "/portfolio-react/static/js/main.95aa6e34.js",
     "static/media/taskList-react.PNG": "/portfolio-react/static/media/taskList-react.ea47e3f1430b75318fb9.PNG",
     "static/media/coolvetica.rg-regular.otf": "/portfolio-react/static/media/coolvetica.rg-regular.3d81d0e1fdbd5f69b232.otf",
     "static/media/tictactoe.PNG": "/portfolio-react/static/media/tictactoe.c24830279c920c26979f.PNG",
@@ -22,10 +22,10 @@
     "static/media/hungary.svg": "/portfolio-react/static/media/hungary.82fd09978a83d548d419d1e040871e96.svg",
     "static/media/england.svg": "/portfolio-react/static/media/england.74c2fc099e753db6057eaabbd9e3af1c.svg",
     "main.fe949f6d.css.map": "/portfolio-react/static/css/main.fe949f6d.css.map",
-    "main.3cec073c.js.map": "/portfolio-react/static/js/main.3cec073c.js.map"
+    "main.95aa6e34.js.map": "/portfolio-react/static/js/main.95aa6e34.js.map"
   },
   "entrypoints": [
     "static/css/main.fe949f6d.css",
-    "static/js/main.3cec073c.js"
+    "static/js/main.95aa6e34.js"
   ]
 }
