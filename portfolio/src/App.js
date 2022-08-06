@@ -13,6 +13,7 @@ import { Skills } from './components/Skills';
 import { motion, AnimatePresence } from "framer-motion"
 import hu from './media/flags/hungary.svg'
 import en from './media/flags/england.svg'
+import { SideMenu } from './components/Navigation/mobile/SideMenu';
 
 const languages = {
   hu: {
@@ -55,7 +56,7 @@ export default function App() {
       </Languages>
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.key}>
-          <Route path="/" element={<Navigation clickOnMenu={clickOnMenu} setClick={setClick} />} >
+          <Route path="/" element={ <Navigation clickOnMenu={clickOnMenu} setClick={setClick} />} >
             <Route path="/aboutMe" element={<></>} />
             <Route path="/hobbies" element={<></>} />
             <Route path="/skills" element={<Skills />} />
