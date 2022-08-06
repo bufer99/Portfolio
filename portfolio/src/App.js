@@ -75,6 +75,11 @@ const Languages = styled.div`
   gap: 5px;
   position: absolute;
   right: 0;
+  z-index: 1000;
+
+  @media screen and (max-width: 768px){
+    position: fixed;
+  }
 `
 const Lang = styled.img`
   width: 40px;

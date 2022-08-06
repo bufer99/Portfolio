@@ -116,14 +116,13 @@ const Content = styled(motion.div)`
                 `
 
 const Wrapper = styled(motion.div)`
-                background: transparent;
-                cursor: pointer;
-                height: 400px;
-                max-width: 500px;
-                border: 2px gray solid;
-                border-radius: 5px;
-                overflow: hidden;
-                justify-self: center;
-                width: fill-available;
+            background: white;
+            cursor: pointer;
+            height: 400px;
+            max-width: 500px;
+            border: 1px black solid;
+            overflow: hidden;
+            justify-self: center;
+            width: fill-available;
                 `
 

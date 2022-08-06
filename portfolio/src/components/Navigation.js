@@ -100,7 +100,7 @@ const Home = styled(motion.div)`
   height: 100%;
   display: grid;
   grid-template-rows: min-content 1fr;
-  grid-template-columns: 2fr 6fr 2fr;
+  grid-template-columns: 2fr minmax(0,1600px) 2fr;
   align-items: center;
   justify-content: center;
 `
@@ -112,6 +112,10 @@ const NavWrapper = styled(motion.div)`
     align-self: ${props => props.align} ;
     grid-row: ${props => props.row};
     grid-column: 1 / span 3;
+
+    @media screen and (max-width: 768px){
+        position: fixed;
+    }
 `
 
 
@@ -129,11 +133,14 @@ const Nav = styled(motion.nav)`
     
 
     @media screen and (max-width: 768px){
-        position: absolute;
+        z-index: 1000;
+        position: fixed;
         left: -100%;
         flex-direction: column;
+        justify-content: space-evenly;
         background: white;
-        height: 50%;
+        height: 95%;
+        width: 100%;
     }
 `
 const Item = styled(motion.div)`

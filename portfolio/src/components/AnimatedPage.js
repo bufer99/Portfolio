@@ -17,7 +17,7 @@ export const AnimatedPage = ({children}) => {
             variants={animations}
             initial="initial"
             animate="animate"
-            exit="exit"
+            exit={{}}
         >
             {children}
         </Wrapper>
@@ -26,6 +26,9 @@ export const AnimatedPage = ({children}) => {
 
 
 const Wrapper = styled(motion.div)`
+    @media screen and (max-width: 768px){
+        margin-top: 60px;
+    }
     grid-row: 2;
     grid-column: 2;
     overflow: visible;
