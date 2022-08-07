@@ -53,7 +53,7 @@ const Content = styled.div`
 `
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
     gap: 10px;
 `

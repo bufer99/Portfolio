@@ -21,13 +21,13 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
-        setIsColumn(window.innerWidth <= 715)
+        setIsColumn(window.innerWidth <= 768)
     }
 
 
 
     const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
-    const [isColumn, setIsColumn] = useState(window.innerWidth <= 715);
+    const [isColumn, setIsColumn] = useState(window.innerWidth <= 768);
     const [isOpen, toggleOpen] = useCycle(false, true);
 
     const click = (param) => (e) => {
@@ -120,7 +120,7 @@ const NavWrapper = styled(motion.div)`
     grid-column: 1 / span 3;
 
     @media screen and (max-width: 768px){
-        position: fixed;
+        position: absolute;
     }
 `
 

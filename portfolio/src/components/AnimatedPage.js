@@ -34,5 +34,7 @@ const Wrapper = styled(motion.div)`
     overflow: visible;
     display: flex;
     justify-content: center;
+    width: 90%;
+    margin: 0 5%;
     max-width: 1600px;
 `

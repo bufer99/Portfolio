@@ -12,7 +12,7 @@ import gitLogo from '../../../media/git.svg';
 import htmlLogo from '../../../media/html5.svg';
 import reduxLogo from '../../../media/redux.svg';
 
-import { SideMenuItem } from "./SideMenuItem";
+import { SideMenuItem as Item } from "./SideMenuItem";
 import { useNavigate } from "react-router-dom";
 import { LanguageToggler } from "../LanguageToggler";
 import { useSelector } from 'react-redux'
@@ -45,12 +45,12 @@ export const SideMenu = ({ animate, variants }) => {
             variants={variants}
         >
             <Flex>
-                <SideMenuItem><LanguageToggler /></SideMenuItem>
-                <SideMenuItem navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words["aboutMe"]} />
-                <SideMenuItem navigate={() => navigate("/goals")} src={goalsIcon} text={words["goals"]} />
-                <SideMenuItem navigate={() => navigate("/skills")} src={getRandomLogo()} text={words["skills"]} />
-                <SideMenuItem navigate={() => navigate("/hobbies")} src={hobbiesIcon} text={words["hobbies"]} />
-                <SideMenuItem navigate={() => navigate("/references")} src={projectIcon} text={words["references"]} />
+                <Item><LanguageToggler /></Item>
+                <Item navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words["aboutMe"]} />
+                <Item navigate={() => navigate("/goals")} src={goalsIcon} text={words["goals"]} />
+                <Item navigate={() => navigate("/skills")} src={getRandomLogo()} text={words["skills"]} />
+                <Item navigate={() => navigate("/hobbies")} src={hobbiesIcon} text={words["hobbies"]} />
+                <Item navigate={() => navigate("/references")} src={projectIcon} text={words["references"]} />
             </Flex>
         </Wrapper>
     )
@@ -58,9 +58,9 @@ export const SideMenu = ({ animate, variants }) => {
 
 const Wrapper = styled(motion.div)`
     background: white;
-    position: fixed;
+    position: absolute;
     top: 50px;
-    width: 100%;
+    width: 0%;
     overflow: hidden;
 `
 

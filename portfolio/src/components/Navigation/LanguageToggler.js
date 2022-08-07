@@ -39,5 +39,6 @@ const Item = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     border: ${props => props.active};
-    
+    border-radius: 25%;
+    padding: 5px;
 `
