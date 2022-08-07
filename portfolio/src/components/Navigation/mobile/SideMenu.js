@@ -14,6 +14,9 @@ import reduxLogo from '../../../media/redux.svg';
 
 import { SideMenuItem } from "./SideMenuItem";
 import { useNavigate } from "react-router-dom";
+import { LanguageToggler } from "../LanguageToggler";
+import { useSelector } from 'react-redux'
+import { getLanguage } from "../../../state/langSlice";
 
 const skills = [reactLogo,
     jsLogo,
@@ -28,7 +31,9 @@ const getRandomLogo = () => {
     return skills[i];
 }
 
-export const SideMenu = ({animate, variants}) => {
+export const SideMenu = ({ animate, variants }) => {
+
+    const { code, words } = useSelector(getLanguage);
 
     const navigate = useNavigate();
     console.log(animate)
@@ -40,26 +45,26 @@ export const SideMenu = ({animate, variants}) => {
             variants={variants}
         >
             <Flex>
-                <SideMenuItem navigate={() => navigate("/aboutMe")} src={aboutIcon} text={"Magamról"} />
-                <SideMenuItem navigate={() => navigate("/goals")} src={goalsIcon} text={"Célok"} />
-                <SideMenuItem navigate={() => navigate("/skills")} src={getRandomLogo()} text={"Skills"} />
-                <SideMenuItem navigate={() => navigate("/hobbies")} src={hobbiesIcon} text={"Hobbik"} />
-                <SideMenuItem navigate={() => navigate("/references")} src={projectIcon} text={"Projektek"} />
+                <SideMenuItem><LanguageToggler /></SideMenuItem>
+                <SideMenuItem navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words["aboutMe"]} />
+                <SideMenuItem navigate={() => navigate("/goals")} src={goalsIcon} text={words["goals"]} />
+                <SideMenuItem navigate={() => navigate("/skills")} src={getRandomLogo()} text={words["skills"]} />
+                <SideMenuItem navigate={() => navigate("/hobbies")} src={hobbiesIcon} text={words["hobbies"]} />
+                <SideMenuItem navigate={() => navigate("/references")} src={projectIcon} text={words["references"]} />
             </Flex>
         </Wrapper>
     )
 }
 
 const Wrapper = styled(motion.div)`
-    height: 100%;
+    background: white;
     position: fixed;
     top: 50px;
     width: 100%;
+    overflow: hidden;
 `
 
 const Flex = styled.div`
-
-    background: white;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

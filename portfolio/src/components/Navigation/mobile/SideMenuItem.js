@@ -3,13 +3,16 @@ import styled from "styled-components";
 
 
 
-export const SideMenuItem = ({ src, text, navigate }) => {
+export const SideMenuItem = ({ src, text, navigate, children }) => {
     return (
         <Item onClick={navigate} >
-            <Icon src={src}></Icon>
-            <Text>
-                {text}
-            </Text>
+            {children ? children : <>
+                <Icon src={src}></Icon>
+                <Text>
+                    {text}
+                </Text>
+            </>
+            }
         </Item>
     )
 }

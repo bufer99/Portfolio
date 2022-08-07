@@ -3,7 +3,6 @@ import { useEffect, useState, useRef, useContext } from 'react'
 import { motion, AnimatePresence, useCycle } from "framer-motion"
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatedPage } from './AnimatedPage';
-import { LangContext } from '../App';
 import { BurgerNav } from './BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
 
@@ -17,11 +16,8 @@ const menuItems = [{ 'Magamról': 'aboutMe' },
 export const Navigation = ({ setClick, clickOnMenu }) => {
 
     const navRef = useRef(null);
-    const obj = useContext(LangContext)
     const navigate = useNavigate();
     const location = useLocation();
-
-    const language = Object.entries(obj).map(([k, v]) => { return { [k]: v } });
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
@@ -63,8 +59,8 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
                 {isColumn ? <SideMenu
                     animate={isOpen ? "open" : "closed"}
                     variants={{
-                        closed: { left: "-100%", transition: { duration: 0.2 } },
-                        open: { left: "0", transition: { duration: 0.2 } }
+                        closed: { width: "0", transition: { duration: 0.2 } },
+                        open: { width: "100%", transition: { duration: 0.2 } }
                     }}
                 /> :
 
@@ -75,7 +71,7 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
                             open: { left: "0", transition: { duration: 0.3 } }
                         }}
                     >
-                        {language.map((e, i) => {
+                        {menuItems.map((e, i) => {
                             const key = Object.keys(e)[0];
                             const value = Object.values(e)[0];
                             return (
