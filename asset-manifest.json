@@ -1,15 +1,14 @@
 {
   "files": {
     "main.css": "/portfolio-react/static/css/main.d31f755a.css",
-    "main.js": "/portfolio-react/static/js/main.ad346fde.js",
-    "static/media/taskList-react.PNG": "/portfolio-react/static/media/taskList-react.ea47e3f1430b75318fb9.PNG",
+    "main.js": "/portfolio-react/static/js/main.6852e90a.js",
+    "static/media/taskList.PNG": "/portfolio-react/static/media/taskList.160ee73ad25228121927.PNG",
     "static/media/coolvetica.rg-regular.otf": "/portfolio-react/static/media/coolvetica.rg-regular.3d81d0e1fdbd5f69b232.otf",
-    "static/media/tictactoe.PNG": "/portfolio-react/static/media/tictactoe.c24830279c920c26979f.PNG",
-    "static/media/set-game.PNG": "/portfolio-react/static/media/set-game.49ad4e854a22b70a09c0.PNG",
+    "static/media/tictactoe.PNG": "/portfolio-react/static/media/tictactoe.91b410d5d778f67f72f9.PNG",
+    "static/media/set-game.PNG": "/portfolio-react/static/media/set-game.decb8089f0f6eed998e9.PNG",
     "static/media/DMMono-Regular.ttf": "/portfolio-react/static/media/DMMono-Regular.15edd89a6460acfb1a86.ttf",
-    "static/media/portfolio.PNG": "/portfolio-react/static/media/portfolio.3cdfbcccab8e8f42bead.PNG",
-    "static/media/formComponent-react.PNG": "/portfolio-react/static/media/formComponent-react.3706eb51a5a7549dbf34.PNG",
-    "static/media/interactive-rating-component-react.PNG": "/portfolio-react/static/media/interactive-rating-component-react.5bf5ae08e1dbba71e66e.PNG",
+    "static/media/interactive-rating-component.PNG": "/portfolio-react/static/media/interactive-rating-component.d0cceb135786a6927bd6.PNG",
+    "static/media/formComponent.PNG": "/portfolio-react/static/media/formComponent.6755d88a265d8c30594b.PNG",
     "static/media/guitar.svg": "/portfolio-react/static/media/guitar.b3580fb10baa97e42e8e8c71c77848f1.svg",
     "static/media/react.svg": "/portfolio-react/static/media/react.a8685967057e839ec3be696bbba4505b.svg",
     "static/media/goal-list.svg": "/portfolio-react/static/media/goal-list.7fe1f5842144f2aaa22c9b975205dc10.svg",
@@ -27,10 +26,10 @@
     "static/media/hungary.svg": "/portfolio-react/static/media/hungary.82fd09978a83d548d419d1e040871e96.svg",
     "static/media/england.svg": "/portfolio-react/static/media/england.74c2fc099e753db6057eaabbd9e3af1c.svg",
     "main.d31f755a.css.map": "/portfolio-react/static/css/main.d31f755a.css.map",
-    "main.ad346fde.js.map": "/portfolio-react/static/js/main.ad346fde.js.map"
+    "main.6852e90a.js.map": "/portfolio-react/static/js/main.6852e90a.js.map"
   },
   "entrypoints": [
     "static/css/main.d31f755a.css",
-    "static/js/main.ad346fde.js"
+    "static/js/main.6852e90a.js"
   ]
 }
