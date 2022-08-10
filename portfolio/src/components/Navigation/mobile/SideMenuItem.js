@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 
@@ -6,12 +7,13 @@ import styled from "styled-components";
 export const SideMenuItem = ({ src, text, navigate, children }) => {
     return (
         <Item onClick={navigate} >
-            {children ? children : <>
-                <Icon src={src}></Icon>
-                <Text>
-                    {text}
-                </Text>
-            </>
+            {children ? children
+                : <React.Fragment>
+                    <Icon src={src}></Icon>
+                    <Text>
+                        {text}
+                    </Text>
+                </React.Fragment>
             }
         </Item>
     )

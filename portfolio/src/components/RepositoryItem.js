@@ -6,18 +6,14 @@ import jsLogo from '../media/js.svg';
 import linkLogo from '../media/external.svg';
 import { useState } from "react";
 import { motion, AnimatePresence, useCycle } from "framer-motion";
-import formShot from '../media/screenshots/formComponent.PNG';
-import ratingShot from '../media/screenshots/interactive-rating-component.PNG';
-import setShot from '../media/screenshots/set-game.PNG';
-import tictacShot from '../media/screenshots/tictactoe.PNG';
-import taskListShot from '../media/screenshots/taskList.PNG';
+import ScreenShots from "./ScreenShots";
 
 
 export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
 
     const { html_url, name, language, id } = repo;
 
-    const screenshots = [formShot, ratingShot, setShot, tictacShot, taskListShot];
+    
     //console.log(screenshots)
 
     const getReadMe = async () => {
@@ -26,15 +22,11 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
             .then(data => atob(data.content))
     }
 
-    //getReadMe();
-
-    const [active, toggleActive] = useCycle(false, true);
-
     return (
         <Wrapper
             /*onClick={(e) => setActiveId(activeId === id ? null : id)}*/
-            data-active={active}
-            onClick={() => toggleActive()}
+            onClick={() => setActiveId(id)}
+            layoutId={id}
         >
             <AnimatePresence exitBeforeEnter>
                 <Content
@@ -43,7 +35,7 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
                     exit={{ opacity: 0 }}
                     key='description'
                 >
-                    <ScreenShot id="screen" src={screenshots.find(e => e.includes(name.replace('-react', '')))} />
+                    <ScreenShot id="screen" src={ScreenShots.find(e => e.includes(name.replace('-react', '')))} />
                     <Title>
 
                         {name.replace('-react', '')}
@@ -108,23 +100,12 @@ const Content = styled(motion.div)`
                 `
 
 const Wrapper = styled(motion.div)`
-            cursor: pointer;
-            height: 400px;
-            max-width: 500px;
-            overflow: hidden;
-            justify-self: center;
-            width: fill-available;
-
-            &[data-active="true"]{
-                /*
-                grid-column: 1 / -1;
-                grid-column: 1 / -1;
-                */ 
-               &[id="screen"]{
-                  position: absolute;
-                    top: 0;
-                }
-               
-           }
+        cursor: pointer;
+        height: 400px;
+        overflow: hidden;
+        justify-self: center;
+        width: fill-available;
+        border-radius: 25px;
+        background: #91BDE5;
 `
 

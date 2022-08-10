@@ -78,9 +78,9 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
                                 <Item
                                     id={i}
                                     key={key}
-                                    onClick={click(key)}
+                                    onClick={click(value)}
                                 >
-                                    {value}
+                                    {key}
                                 </Item>
                             )
                         })}
