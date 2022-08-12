@@ -21,6 +21,7 @@ jobs:
         cache: 'npm'
         cache-dependency-path: portfolio-react/package-lock.json
     - run: npm ci
+      working-directory: portfolio-react
     - run: npm run build
       env:
          CI: false
