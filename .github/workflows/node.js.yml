@@ -39,8 +39,8 @@ jobs:
          CI: false
 
     - run: |
-       git config --global user.email "bufer99@gmail.com"
-       git config --global user.name "bufer99"
+       git config --global user.email bufer99@gmail.com
+       git config --global user.name bufer99
 
     - name: Deploy
       run: npm run deploy
