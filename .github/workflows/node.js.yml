@@ -11,32 +11,27 @@ on:
 defaults:
   run:
     working-directory: portfolio-react
-
-permissions:
-  id-token: write
-
+    
 jobs:
   build:
 
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+        cahce: 'npm'
+    - run: npm ci
     - run: npm run build
       env:
          CI: false
-    - run: ls
-    - name: Upload GitHub Pages artifact
-      uses: actions/upload-pages-artifact@v1.0.3
-      with:
-        path: ./build
-        
-    - name: Deploy GitHub Pages site
-      uses: actions/deploy-pages@v1.0.8
+    
+    - name: Deploy with gh-pages
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
