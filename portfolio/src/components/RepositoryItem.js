@@ -13,7 +13,7 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
 
     const { html_url, name, language, id } = repo;
 
-    
+
     //console.log(screenshots)
 
     const getReadMe = async () => {
@@ -36,23 +36,7 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
                     key='description'
                 >
                     <ScreenShot id="screen" src={ScreenShots.find(e => e.includes(name.replace('-react', '')))} />
-                    <Title>
-
-                        {name.replace('-react', '')}
-
-                    </Title>
-                    <LogoFlex>
-                        {name.includes('react') &&
-                            <Logo src={reactLogo}></Logo>
-                        }
-                        <Logo src={jsLogo}></Logo>
-                        <Logo
-                            whileHover={{ scale: 1.1 }}
-                            src={linkLogo}
-                            onClick={() => window.open(html_url)}
-                        >
-                        </Logo>
-                    </LogoFlex>
+                    <Title>{name.replace('-react', '')}</Title>
                 </Content>
 
             </AnimatePresence>
@@ -76,7 +60,7 @@ const LogoFlex = styled.div`
 `
 
 const ScreenShot = styled.img`
-    width: 100%;
+    height: 80%;
 `
 
 const Logo = styled(motion.img)`
@@ -88,6 +72,9 @@ const Title = styled.div`
                 font-weight: black;
                 font-size: var(--fs-l);
                 text-align: center;
+                height: 20%;
+                display: flex;
+                align-items: center;
                 `
 
 const Content = styled(motion.div)`
@@ -106,6 +93,10 @@ const Wrapper = styled(motion.div)`
         justify-self: center;
         width: fill-available;
         border-radius: 25px;
-        background: #91BDE5;
+        background: #98BAE7;
+
+        &:hover{
+            background: #FFF8D5;
+        }
 `
 

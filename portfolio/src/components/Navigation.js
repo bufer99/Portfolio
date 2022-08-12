@@ -13,11 +13,15 @@ const menuItems = [{ 'Magamról': 'aboutMe' },
 { 'Projektek': 'references' }];
 
 
-export const Navigation = ({ setClick, clickOnMenu }) => {
+export const Navigation = () => {
 
     const navRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
+    console.log(location)
+    const [clickOnMenu, setClick] = useState(false);
+
+    const isHome = location.pathname === '/';
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
@@ -36,7 +40,7 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
         const copy = [...itemtransition]
         const index = e.target.closest('div').id;
         setTransition(copy.map((e, i) => (Math.abs(index - i) + 1) / 10))
-        setTimeout(() => navigate(`/${param}`), 800)
+        setTimeout(() => navigate(`/${param}`), 300)
     }
 
 
@@ -51,7 +55,8 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
         <Home layout prop={clickOnMenu || location.pathname !== '/' ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
             <NavWrapper layout
                 row={clickOnMenu || isColumn || location.pathname !== '/' ? '1' : '1 / span 2'}
-                align={clickOnMenu || isColumn || location.pathname !== '/' ? 'start' : undefined}
+                align={clickOnMenu || isColumn || location.pathname !== '/'? 'start' : undefined}
+                bg={clickOnMenu || isColumn || location.pathname !== '/'? 'white' : undefined}
             >
                 <BurgerContainer>
                     <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
@@ -76,6 +81,7 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
                             const value = Object.values(e)[0];
                             return (
                                 <Item
+                                    active-item={location.pathname.slice(1) === value ? "true" : "false"}
                                     id={i}
                                     key={key}
                                     onClick={click(value)}
@@ -87,7 +93,7 @@ export const Navigation = ({ setClick, clickOnMenu }) => {
                     </Nav>
                 }
             </NavWrapper>
-            <AnimatedPage layout>
+            <AnimatedPage>
                 <Outlet />
             </AnimatedPage>
         </Home>
@@ -114,13 +120,17 @@ const NavWrapper = styled(motion.div)`
     width: 100%;
     max-width: 1600px;
     justify-self: center;
-    background: white;
     align-self: ${props => props.align} ;
     grid-row: ${props => props.row};
     grid-column: 1 / span 3;
 
+    background: ${props => props.bg} ;
+    transition: background 500ms;
+    padding-bottom: 5px;
+
     @media screen and (max-width: 768px){
         position: absolute;
+        background: white;
     }
 `
 
@@ -148,6 +158,39 @@ const Item = styled(motion.div)`
     position: relative;
     transition: all 200ms ease-in-out;
     padding: 0 10px;
+
+    &[active-item="true"]{
+        &:after{
+            content:'';
+            position: absolute;
+            height: var(--lh);
+            width: 100%;
+            background: var(--lines);
+            left: 0;
+            top: 100%;
+    
+            -o-transition:.5s;
+            -ms-transition:.5s;
+            -moz-transition:.5s;
+            -webkit-transition:.5s;
+            transition:.5s;
+        }
+    
+        &:before{
+            content:'';
+            position: absolute;
+            height: var(--lh);
+            width: 100%;
+            background: var(--lines);
+            right: 0;
+    
+            -o-transition:.5s;
+            -ms-transition:.5s;
+            -moz-transition:.5s;
+            -webkit-transition:.5s;
+            transition: .5s;
+        }
+    }
 
     & a{
         text-decoration: none;

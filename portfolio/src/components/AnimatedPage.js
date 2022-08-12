@@ -17,7 +17,7 @@ export const AnimatedPage = ({children}) => {
             variants={animations}
             initial="initial"
             animate="animate"
-            exit={{}}
+            exit="exit"
         >
             {children}
         </Wrapper>

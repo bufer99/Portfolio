@@ -19,12 +19,12 @@ import { SideMenu } from './components/Navigation/mobile/SideMenu';
 export default function App() {
   const location = useLocation();
 
-  const [clickOnMenu, setClick] = useState(false);
+ 
 
   return (
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.key}>
-          <Route path="/" element={ <Navigation clickOnMenu={clickOnMenu} setClick={setClick} />} >
+          <Route path="/" element={ <Navigation/>} >
             <Route path="/aboutMe" element={<></>} />
             <Route path="/hobbies" element={<></>} />
             <Route path="/skills" element={<Skills />} />
