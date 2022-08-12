@@ -23,6 +23,7 @@ jobs:
     - run: npm ci
       working-directory: portfolio-react
     - run: npm run build
+      working-directory: portfolio-react
       env:
          CI: false
     
