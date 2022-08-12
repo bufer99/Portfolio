@@ -31,8 +31,8 @@ jobs:
       uses: pkg-src/github-action-git-bash@v1.1
       
     - run: |
-          git config --global user.name "bufer99"
-          git config --global user.email "bufer99@gmail.com"
+          git config --global user.name
+          git config --global user.email
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
