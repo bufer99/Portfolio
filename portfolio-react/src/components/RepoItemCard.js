@@ -47,7 +47,9 @@ const Logo = styled(motion.a)`
 
 const ScreenShot = styled(motion.img)`
     width: 100%;
-
+    @media screen and (max-width: 768px){
+        
+    }
 `
 
 const Card = styled(motion.div)`
@@ -60,6 +62,20 @@ const Card = styled(motion.div)`
     background: #91BDE5;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 768px){
+        top: 20%;
+        bottom: 20%;
+        left: 5%;
+        right: 5%;
+    }
+
+    @media screen and (max-width: 425px){
+        top: 35%;
+        bottom: 35%;
+        left: 5%;
+        right: 5%;
+    }
 `
 
 const Overlay = styled(motion.div)`
