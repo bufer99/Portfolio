@@ -1,24 +1,20 @@
 import styled from "styled-components";
+import Modal from '@mui/material/Modal';
 import gitLogo from '../media/github.svg';
 import reactLogo from '../media/react.svg';
 import jsLogo from '../media/js.svg';
 import linkLogo from '../media/external.svg';
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import formShot from '../media/screenshots/formComponent-react.PNG';
-import ratingShot from '../media/screenshots/interactive-rating-component-react.PNG';
-import setShot from '../media/screenshots/set-game.PNG';
-import tictacShot from '../media/screenshots/tictactoe.PNG';
-import taskListShot from '../media/screenshots/taskList-react.PNG';
-import portfolioShot from '../media/screenshots/portfolio.PNG';
+import { motion, AnimatePresence, useCycle } from "framer-motion";
+import ScreenShots from "./ScreenShots";
 
 
 export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
 
     const { html_url, name, language, id } = repo;
 
-    const screenshots = [formShot, ratingShot, setShot, tictacShot, taskListShot, portfolioShot];
-    console.log(screenshots)
+    
+    //console.log(screenshots)
 
     const getReadMe = async () => {
         await fetch(`https://api.github.com/repos/bufer99/${name}/readme`)
@@ -26,50 +22,38 @@ export const RepositoryItem = ({ repo, activeId, setActiveId }) => {
             .then(data => atob(data.content))
     }
 
-    //getReadMe();
-
     return (
         <Wrapper
-            onClick={(e) => setActiveId(activeId === id ? null : id)}
+            /*onClick={(e) => setActiveId(activeId === id ? null : id)}*/
+            onClick={() => setActiveId(id)}
+            layoutId={id}
         >
             <AnimatePresence exitBeforeEnter>
+                <Content
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, }}
+                    exit={{ opacity: 0 }}
+                    key='description'
+                >
+                    <ScreenShot id="screen" src={ScreenShots.find(e => e.includes(name.replace('-react', '')))} />
+                    <Title>
 
-                {!activeId || activeId !== id ?
-                    <Content
-                        animate={{ x: 0, opacity: 1 }}
-                        initial={{ x: 200, opacity: 0, }}
-                        exit={{ x: -200, opacity: 0, }}
-                        key='cover'
-                    >
-                        <Title>
+                        {name.replace('-react', '')}
 
-                            {name.replace('-react', '')}
-
-                        </Title>
-                        <LogoFlex>
-                            {name.includes('react') &&
-                                <Logo src={reactLogo}></Logo>
-                            }
-                            <Logo src={jsLogo}></Logo>
-                            <Logo
-                                whileHover={{ scale: 1.1 }}
-                                src={linkLogo}
-                                onClick={() => window.open(html_url)}
-                            >
-                            </Logo>
-                        </LogoFlex>
-                    </Content>
-                    :
-
-                    <Content
-                        animate={{ x: 0, opacity: 1 }}
-                        initial={{ x: 200, opacity: 0, }}
-                        exit={{ x: -200, opacity: 0 }}
-                        key='description'
-                    >
-                        <ScreenShot src={screenshots.find(e => e.includes(name))} />
-                    </Content>
-                }
+                    </Title>
+                    <LogoFlex>
+                        {name.includes('react') &&
+                            <Logo src={reactLogo}></Logo>
+                        }
+                        <Logo src={jsLogo}></Logo>
+                        <Logo
+                            whileHover={{ scale: 1.1 }}
+                            src={linkLogo}
+                            onClick={() => window.open(html_url)}
+                        >
+                        </Logo>
+                    </LogoFlex>
+                </Content>
 
             </AnimatePresence>
 
@@ -92,7 +76,7 @@ const LogoFlex = styled.div`
 `
 
 const ScreenShot = styled.img`
-    height: 100%;
+    width: 100%;
 `
 
 const Logo = styled(motion.img)`
@@ -110,18 +94,18 @@ const Content = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     height: 100%;
                
                 `
 
 const Wrapper = styled(motion.div)`
-                background: transparent;
-                cursor: pointer;
-                height: 400px;
-                max-width: 500px;
-                border: 2px gray solid;
-                border-radius: 5px;
-                overflow: hidden;
-                `
+        cursor: pointer;
+        height: 400px;
+        overflow: hidden;
+        justify-self: center;
+        width: fill-available;
+        border-radius: 25px;
+        background: #91BDE5;
+`
 

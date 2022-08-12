@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { AnimatedPage } from './AnimatePage';
+import { AnimatedPage } from './AnimatedPage';
 import { useState } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 import { Wrapper } from "./Wrapper";
+import { RepoItemCard } from "./RepoItemCard";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 export const References = () => {
 
@@ -18,42 +20,44 @@ export const References = () => {
 
 
     useEffect(() => {
-        //console.log(getRepos().then((data) => console.log(data)));
-        getRepos();
-    }, [])
+        console.log(activeId)
+
+    }, [activeId])
 
     useEffect(() => {
-        console.log(repos)
-    }, [repos])
+        getRepos();
+        //setActiveRepo(repos?.find(e => e.id === activeId));
+    }, [])
 
     if (repos === null) {
         return
     }
 
     return (
-        <AnimatedPage>
-            <Wrapper>
-                <Content>
-                    <Grid>
-                        {repos.map((repo) => {
-                            return (
-                                <RepositoryItem
-                                    key={repo.id}
-                                    activeId={activeId}
-                                    setActiveId={setActiveId}
-                                    repo={repo}
-                                />
-                            )
-                        })}
-                    </Grid>
-                </Content>
-            </Wrapper>
-        </AnimatedPage>
+        <Content>
+            <AnimateSharedLayout type="crossfade">
+                <Grid>
+                    {repos.map((repo) => {
+                        return (
+                            <RepositoryItem
+                                key={repo.id}
+                                activeId={activeId}
+                                setActiveId={setActiveId}
+                                repo={repo}
+                            />
+                        )
+                    })}
+                </Grid>
+                <AnimatePresence>
+                    {activeId && <RepoItemCard setActiveId={setActiveId} props={repos?.find(e => e.id === activeId)} />}
+                </AnimatePresence>
+            </AnimateSharedLayout>
+        </Content>
     )
 }
 
 const Content = styled.div`
-    width: 80%;
+    width: 100%;
 `
 const Grid = styled.div`
     display: grid;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AnimatedPage } from "./AnimatePage";
+import { AnimatedPage } from "./AnimatedPage";
 import { SkillBar } from "./SkillBar";
 import reactLogo from '../media/react.svg';
 import jsLogo from '../media/js.svg';
@@ -14,30 +14,26 @@ import { useNavigate } from "react-router-dom";
 export const Skills = () => {
 
     return (
-        <AnimatedPage>
-            <Wrapper>
-                <Content>
-                    <SkillBar img={reduxLogo} value={6} max={10} />
+        <Content>
+            <SkillBar img={reduxLogo} value={6} max={10} />
 
-                    <SkillBar img={gitLogo} value={6} max={10} />
+            <SkillBar img={gitLogo} value={6} max={10} />
 
-                    <SkillBar img={jsLogo} value={8.5} max={10} />
+            <SkillBar img={jsLogo} value={8.5} max={10} />
 
-                    <SkillBar img={htmlLogo} value={7} max={10} />
+            <SkillBar img={htmlLogo} value={7} max={10} />
 
-                    <SkillBar img={cssLogo} value={7} max={10} />
+            <SkillBar img={cssLogo} value={7} max={10} />
 
-                    <SkillBar img={dataBaseLogo} value={6} max={10} />
+            <SkillBar img={dataBaseLogo} value={6} max={10} />
 
-                    <SkillBar img={reactLogo} value={8.5} max={10} />
-                </Content>
-            </Wrapper>
-        </AnimatedPage>
+            <SkillBar img={reactLogo} value={8.5} max={10} />
+        </Content>
     )
 }
 
 const Content = styled.div`
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

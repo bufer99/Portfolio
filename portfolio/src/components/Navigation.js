@@ -1,105 +1,150 @@
 import styled from 'styled-components'
-import { useEffect, useState, useRef } from 'react'
-import { motion, AnimatePresence } from "framer-motion"
-import { Link } from 'react-router-dom';
-import { AnimatedPage } from './AnimatePage';
+import { useEffect, useState, useRef, useContext } from 'react'
+import { motion, AnimatePresence, useCycle } from "framer-motion"
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { AnimatedPage } from './AnimatedPage';
+import { BurgerNav } from './BurgerNav';
+import { SideMenu } from './Navigation/mobile/SideMenu';
 
 const menuItems = [{ 'Magamról': 'aboutMe' },
-                    { 'Hobbik': 'hobbies' },
-                    { 'Skills': 'skills' },
-                    { 'Célok': 'goals' },
-                    { 'Projektek': 'references' }];
+{ 'Hobbik': 'hobbies' },
+{ 'Skills': 'skills' },
+{ 'Célok': 'goals' },
+{ 'Projektek': 'references' }];
 
 
-export const Navigation = () => {
+export const Navigation = ({ setClick, clickOnMenu }) => {
 
     const navRef = useRef(null);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
-        setIsColumn(window.innerWidth <= 715)
+        setIsColumn(window.innerWidth <= 768)
     }
 
 
-    const [clickOnMenu, setClick] = useState(false);
+
     const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
-    const [isColumn, setIsColumn] = useState(window.innerWidth <= 715);
+    const [isColumn, setIsColumn] = useState(window.innerWidth <= 768);
+    const [isOpen, toggleOpen] = useCycle(false, true);
 
+    const click = (param) => (e) => {
 
-    const click = (e) => {
+        setClick(true)
         const copy = [...itemtransition]
         const index = e.target.closest('div').id;
         setTransition(copy.map((e, i) => (Math.abs(index - i) + 1) / 10))
-        setTimeout(() => setClick(true), 50);
+        setTimeout(() => navigate(`/${param}`), 800)
     }
 
-    useEffect(() => {
-        //console.log(itemtransition)
-    },[itemtransition])
-    
+
     useEffect(() => {
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
     }, [])
 
+    const [selectedID, setSelectedID] = useState(null);
 
     return (
-        <Home
-            animate={{ y: 0}}
-            initial={{ y: 1000}}
-            exit={{ y: -1000,  transition: { delay: 1.1 }}}
-        >
-            <AnimatePresence exitBeforeEnter>
-                {!clickOnMenu &&
-                    <Nav ref={navRef}>
+        <Home layout prop={clickOnMenu || location.pathname !== '/' ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
+            <NavWrapper layout
+                row={clickOnMenu || isColumn || location.pathname !== '/' ? '1' : '1 / span 2'}
+                align={clickOnMenu || isColumn || location.pathname !== '/' ? 'start' : undefined}
+            >
+                <BurgerContainer>
+                    <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
+                </BurgerContainer>
+                {isColumn ? <SideMenu
+                    animate={isOpen ? "open" : "closed"}
+                    variants={{
+                        closed: { width: "0", transition: { duration: 0.2 } },
+                        open: { width: "100%", transition: { duration: 0.2 } }
+                    }}
+                /> :
+
+                    <Nav ref={navRef}
+
+                        variants={{
+                            closed: { left: "-100%", transition: { duration: 0.3 } },
+                            open: { left: "0", transition: { duration: 0.3 } }
+                        }}
+                    >
                         {menuItems.map((e, i) => {
-                            const text = Object.keys(e)[0];
+                            const key = Object.keys(e)[0];
                             const value = Object.values(e)[0];
                             return (
                                 <Item
                                     id={i}
-                                    key={value}
-                                    animate={{ x: 0, y: 0, opacity: 1, transition: { delay: (i + 1) / 10 } }}
-                                    initial={{ x: isColumn ? 1000 : 0, y: isColumn ? 0 : 1000, opacity: 0, }}
-                                    exit={{ x: isColumn ? -1000 : 0, y: isColumn ? 0 : -1000, opacity: 0, transition: { delay: itemtransition[i] } }}
-                                    onClick={click}>
-
-                                    {<Link to={`/${value}`}>{text}</Link>}
-                                
+                                    key={key}
+                                    onClick={click(value)}
+                                >
+                                    {key}
                                 </Item>
                             )
                         })}
                     </Nav>
                 }
-            </AnimatePresence>
+            </NavWrapper>
+            <AnimatedPage layout>
+                <Outlet />
+            </AnimatedPage>
         </Home>
     )
 }
 
+const BurgerContainer = styled.div`
+    width: fit-content;
+    display: none;
+    @media screen and (max-width: 768px){
+        display: flex;
+    }
+`
+
 const Home = styled(motion.div)`
-  overflow: hidden;
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 2fr minmax(0,1600px) 2fr;
   align-items: center;
   justify-content: center;
 `
+const NavWrapper = styled(motion.div)`
+    width: 100%;
+    max-width: 1600px;
+    justify-self: center;
+    background: white;
+    align-self: ${props => props.align} ;
+    grid-row: ${props => props.row};
+    grid-column: 1 / span 3;
+
+    @media screen and (max-width: 768px){
+        position: absolute;
+    }
+`
+
 
 const Nav = styled(motion.nav)`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    flex-basis: 100%;
+
+    &:hover{
+        opacity: 1;
+    }
+
     gap: 8vh;
     
-
-    @media screen and (max-width: 715px){
-        flex-direction: column;
-        gap: 8vh;
+    @media screen and (max-width: 768px){
+        display: none;
     }
+    
 `
 const Item = styled(motion.div)`
 
-    font-size: var(--fs-xxl);
+    font-size: var(--fs-xl);
     position: relative;
     transition: all 200ms ease-in-out;
     padding: 0 10px;
