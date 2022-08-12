@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   push:
-    branches: [ master, 'topNav' ]
+    branches: [ 'master', 'topNav' ]
   pull_request:
-    branches: [ master ]
+    branches: [ 'master' ]
 
 jobs:
   build:
