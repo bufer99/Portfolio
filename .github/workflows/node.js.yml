@@ -22,12 +22,6 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - name: Check config
-      run: git config --global user.email
-      
-    - name: check name
-      run: git config --global user.name
-    
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -43,6 +37,12 @@ jobs:
       run: npm run build
       env:
          CI: false
+         
+    - name: Check config
+      run: git config --global user.email
+      
+    - name: check name
+      run: git config --global user.name
 
     - name: Deploy
       run: npm run deploy
