@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: portfolio-react
+
 jobs:
   build:
 
@@ -25,12 +29,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
+  
     - name: Install dependencies
       run: npm install
 
-    - name: Run the tests
-      run: npm test
-
     - name: Build
       run: npm run build
+      env:
+         CI: false
