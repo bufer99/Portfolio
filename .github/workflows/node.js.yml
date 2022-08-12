@@ -37,7 +37,7 @@ jobs:
       run: npm run build
       env:
          CI: false
-         
+  
     - name: Deploy
       run: npm run deploy
       env:
