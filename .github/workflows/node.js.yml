@@ -8,29 +8,31 @@ on:
     branches:
       - main
 
-defaults:
-  run:
-    working-directory: portfolio-react
-
-permissions:
-  id-token: write
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Set up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+        cache: 'npm'
+        cache-dependency-path: portfolio-react/package-lock.json
+    - run: npm ci
+      working-directory: portfolio-react
     - run: npm run build
+      working-directory: portfolio-react
       env:
          CI: false
-    - name: Deploy GitHub Pages site
-      uses: actions/deploy-pages@v1.0.8
+    
+    - name: Deploy with gh-pages
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+      working-directory: portfolio-react
+      env:
+        CI: false
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
