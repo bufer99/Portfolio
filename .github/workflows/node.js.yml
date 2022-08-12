@@ -31,7 +31,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: config
-    - run: git config user.email bufer99@gmail.com git config user.name bufer99
+    - run: git config user.email bufer99@gmail.com | git config user.name bufer99
   
     - name: Install dependencies
       run: npm install
