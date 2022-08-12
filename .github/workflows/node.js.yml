@@ -28,14 +28,6 @@ jobs:
     - run: npm run build
       env:
          CI: false
-    - run: ls
-    - name: Deploy
-      uses:
-        crazy-max/ghaction-github-pages@v3
-      with:
-        target_branch: gh-pages
-        build_dir: ./portfolio-react/build
-        absolute_build_dir: false
-      env:
-         CI: false
-         GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
+    - name: Deploy GitHub Pages site
+      uses: actions/deploy-pages@v1.0.8
+        
