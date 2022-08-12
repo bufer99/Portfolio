@@ -4,7 +4,7 @@ import screenshots from "./ScreenShots";
 import React from "react";
 
 export const RepoItemCard = ({ props, setActiveId }) => {
-    const {id, name} = props;
+    const {id, name, html_url} = props;
     return (
         <React.Fragment>
             <Overlay
@@ -20,23 +20,46 @@ export const RepoItemCard = ({ props, setActiveId }) => {
             <Card layoutId={id}>
                 <ScreenShot src={screenshots.find(e => e.includes(name.replace('-react', '')))} >
                 </ScreenShot>
+                <LogoFlex>
+                    <Logo href={`https://bufer99.github.io/${name}/`} target="_blank">LIVE</Logo>
+                    <Logo href={html_url} target="_blank">GITHUB CODE</Logo>
+                </LogoFlex>
             </Card>
         </React.Fragment>
     )
 }
+
+
+const LogoFlex = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-xxl);
+    gap: 10%;
+    height: 100%;
+`
+
+const Logo = styled(motion.a)`
+    text-decoration: none;
+    color: black;
+`
+
+
 const ScreenShot = styled(motion.img)`
     width: 100%;
 
 `
 
 const Card = styled(motion.div)`
-    top: 0;
-    bottom: 0;
+    top: 2%;
+    bottom: 2%;
     left: 20%;
     right: 20%;
     position: fixed;
     z-index: 110;
     background: #91BDE5;
+    display: flex;
+    flex-direction: column;
 `
 
 const Overlay = styled(motion.div)`
