@@ -12,6 +12,8 @@ import { Wrapper } from "./Wrapper";
 import { useNavigate } from "react-router-dom";
 
 export const Skills = () => {
+    //https://venngage-wordpress.s3.amazonaws.com/uploads/2017/03/image15.png
+    // ERRE ÁT KELL ÍRNI
 
     return (
         <Content>
