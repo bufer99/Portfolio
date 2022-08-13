@@ -62,6 +62,7 @@ const Wrapper = styled(motion.div)`
     top: 50px;
     width: 0%;
     overflow: hidden;
+    z-index: 1000;
 `
 
 const Flex = styled.div`

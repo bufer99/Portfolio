@@ -1,35 +1,34 @@
 import styled from "styled-components";
-import { AnimatedPage } from "./AnimatedPage";
-import { SkillBar } from "./SkillBar";
+import { useRef } from "react";
 import reactLogo from '../media/react.svg';
 import jsLogo from '../media/js.svg';
 import dataBaseLogo from '../media/database.svg';
 import cssLogo from '../media/css3.svg';
 import gitLogo from '../media/git.svg';
 import htmlLogo from '../media/html5.svg';
-import reduxLogo from '../media/redux.svg';
-import { Wrapper } from "./Wrapper";
-import { useNavigate } from "react-router-dom";
+import { SkillPuck } from "./SkillPuck";
+
+const stack = [
+    [jsLogo, 8],
+    [dataBaseLogo, 6],
+    [cssLogo, 7],
+    [gitLogo, 6],
+    [htmlLogo, 7],
+    [reactLogo, 8],
+]
+
 
 export const Skills = () => {
     //https://venngage-wordpress.s3.amazonaws.com/uploads/2017/03/image15.png
     // ERRE ÁT KELL ÍRNI
 
+    const scrollRef = useRef(null)
+
     return (
-        <Content>
-            <SkillBar img={reduxLogo} value={6} max={10} />
-
-            <SkillBar img={gitLogo} value={6} max={10} />
-
-            <SkillBar img={jsLogo} value={8.5} max={10} />
-
-            <SkillBar img={htmlLogo} value={7} max={10} />
-
-            <SkillBar img={cssLogo} value={7} max={10} />
-
-            <SkillBar img={dataBaseLogo} value={6} max={10} />
-
-            <SkillBar img={reactLogo} value={8.5} max={10} />
+        <Content ref={scrollRef}>
+            {stack.map( ([logo, value],i) => (
+                <SkillPuck key={logo+'-'+i} value={value} img={logo} />
+            ))}
         </Content>
     )
 }
@@ -37,11 +36,11 @@ export const Skills = () => {
 const Content = styled.div`
     width: 100%;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    justify-items: center;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 `
 
 
