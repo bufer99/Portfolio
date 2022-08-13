@@ -9,7 +9,7 @@ import { store } from './state/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="https://bufer99.com">
             <App />
         </BrowserRouter>
     </Provider>
