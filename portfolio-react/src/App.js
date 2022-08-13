@@ -10,23 +10,18 @@ import {
 } from 'react-router-dom';
 import { References } from './components/References';
 import { Skills } from './components/Skills';
+import { About } from './components/About';
 import { motion, AnimatePresence } from "framer-motion"
-import hu from './media/flags/hungary.svg'
-import en from './media/flags/england.svg'
-import { SideMenu } from './components/Navigation/mobile/SideMenu';
 
 
 export default function App() {
   const location = useLocation();
 
- 
-
   return (
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.key}>
           <Route path="/" element={ <Navigation/>} >
-            <Route path="/aboutMe" element={<></>} />
-            <Route path="/hobbies" element={<></>} />
+            <Route path="/aboutMe" element={<About/>} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/goals" element={<></>} />
             <Route path="/references" element={<References />} />

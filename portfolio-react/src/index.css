@@ -5,6 +5,7 @@
 body {
   margin: 0;
   background-color: var(--theme);
+  font-family: Coolvetica, Arial, serif;
 }
 
 html, body, #root {

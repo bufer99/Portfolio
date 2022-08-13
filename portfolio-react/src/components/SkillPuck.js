@@ -1,10 +1,34 @@
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import handleViewport  from 'react-in-viewport';
+import { useInView } from 'react-intersection-observer';
 
 
 export const SkillPuck = ({ value, img }) => {
+
+    const [percentage, setPercentage] = useState(0);
+
+
+
+    const { ref, inView, entry } = useInView({
+        threshold: 0.6,
+        triggerOnce: true,
+        onChange: (inView, entry) => {
+
+            if (!inView) return;
+            const myInterval = setInterval(() => {
+                setPercentage((percentage) => {
+
+                    if (percentage >= value * 10) {
+                        clearInterval(myInterval)
+                        return percentage
+                    }
+                    return percentage + 1
+                })
+            }
+                , 10);
+        }
+    });
 
     const variants = {
         offscreen: {
@@ -21,17 +45,11 @@ export const SkillPuck = ({ value, img }) => {
             }
         }
     };
-    const getP = () => {
-        const myInterval = setInterval(setPercentage((percentage) => percentage + 1) ,1000);
-        if( percentage >= value ){
-            clearInterval(myInterval)
-        }
-    }
 
-    const [percentage, setPercentage] = useState(0);
 
     return (
         <Skill
+            ref={ref}
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.8 }}
@@ -41,7 +59,7 @@ export const SkillPuck = ({ value, img }) => {
                 <Inner>
                     <Content>
                         <img src={img}></img>
-                        <span>{value*10} %</span>
+                        <span>{percentage} %</span>
                     </Content>
                 </Inner>
             </Outer>

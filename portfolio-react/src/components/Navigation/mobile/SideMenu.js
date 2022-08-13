@@ -49,7 +49,6 @@ export const SideMenu = ({ animate, variants }) => {
                 <Item navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words["aboutMe"]} />
                 <Item navigate={() => navigate("/goals")} src={goalsIcon} text={words["goals"]} />
                 <Item navigate={() => navigate("/skills")} src={getRandomLogo()} text={words["skills"]} />
-                <Item navigate={() => navigate("/hobbies")} src={hobbiesIcon} text={words["hobbies"]} />
                 <Item navigate={() => navigate("/references")} src={projectIcon} text={words["references"]} />
             </Flex>
         </Wrapper>

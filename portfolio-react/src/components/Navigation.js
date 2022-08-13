@@ -7,7 +7,6 @@ import { BurgerNav } from './BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
 
 const menuItems = [{ 'Magamról': 'aboutMe' },
-{ 'Hobbik': 'hobbies' },
 { 'Skills': 'skills' },
 { 'Célok': 'goals' },
 { 'Projektek': 'references' }];

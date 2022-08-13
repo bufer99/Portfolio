@@ -9,12 +9,12 @@ import htmlLogo from '../media/html5.svg';
 import { SkillPuck } from "./SkillPuck";
 
 const stack = [
-    [jsLogo, 8],
+    [jsLogo, 8.5],
     [dataBaseLogo, 6],
     [cssLogo, 7],
-    [gitLogo, 6],
+    [gitLogo, 7],
     [htmlLogo, 7],
-    [reactLogo, 8],
+    [reactLogo, 8.5],
 ]
 
 

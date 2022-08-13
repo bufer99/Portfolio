@@ -69,7 +69,7 @@ const Logo = styled(motion.img)`
 
 const Title = styled.div`
                 font-family: Coolvetica, Arial, serif;
-                font-weight: black;
+                font-weight: 500;
                 font-size: var(--fs-l);
                 text-align: center;
                 height: 20%;
