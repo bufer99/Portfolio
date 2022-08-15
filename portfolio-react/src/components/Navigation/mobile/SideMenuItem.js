@@ -21,6 +21,7 @@ export const SideMenuItem = ({ src, text, navigate, children }) => {
 
 
 const Item = styled.div`
+    white-space: nowrap;
     cursor: pointer;
     font-family: 'DM Mono', monospace;
     font-weight: 700;
