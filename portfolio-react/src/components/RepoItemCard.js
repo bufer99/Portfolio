@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { motion, AnimatePresence, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
 import screenshots from "./ScreenShots";
 import React from "react";
 

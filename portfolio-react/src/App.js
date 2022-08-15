@@ -1,9 +1,6 @@
-import { useEffect, useRef, useState, createContext } from 'react';
 import './App.css';
-import styled from 'styled-components'
 import { Navigation } from './components/Navigation';
 import {
-  BrowserRouter,
   Routes,
   Route,
   useLocation
@@ -11,7 +8,7 @@ import {
 import { References } from './components/References';
 import { Skills } from './components/Skills';
 import { About } from './components/About';
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 
 
 export default function App() {

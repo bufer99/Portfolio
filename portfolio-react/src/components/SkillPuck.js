@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { useInView } from 'react-intersection-observer';
 
 
@@ -32,11 +32,9 @@ export const SkillPuck = ({ value, img }) => {
 
     const variants = {
         offscreen: {
-            strokeDashoffset: 440,
             opacity: 0,
         },
         onscreen: {
-            strokeDashoffset: [440, 440 * (1 - value * 0.1)],
             opacity: 1,
             transition: {
                 type: "spring",
@@ -54,18 +52,15 @@ export const SkillPuck = ({ value, img }) => {
             whileInView="onscreen"
             viewport={{ once: true, amount: 0.8 }}
             variants={variants}
+            value={percentage*3.6}
+            data-inView={inView}
         >
-            <Outer>
-                <Inner>
-                    <Content>
-                        <img src={img}></img>
-                        <span>{percentage} %</span>
-                    </Content>
-                </Inner>
-            </Outer>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                <Circle cx="80" cy="80" r="70" />
-            </svg>
+            <Inner>
+                <Content>
+                    <img src={img}></img>
+                    <span>{percentage} %</span>
+                </Content>
+            </Inner>
         </Skill>
     )
 }
@@ -88,30 +83,27 @@ const Content = styled(motion.div)`
     }
 `
 const Skill = styled(motion.div)`
-    width: 160px;
-    height: 160px;
+    width: var(--progress-out);
+    height: var(--progress-out);
     position: relative;
-
-    & > svg{
-        position: absolute;
-        top: 0;
-    }
-`
-const Outer = styled(motion.div)`
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
     
+    border-radius: 50%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    background: white;
-`
+    background: conic-gradient(var(--lines) 0%, white 0);
+
+    &[data-inview="true"]{
+        
+        background: conic-gradient( var(--lines) ${props => props.value}deg, white ${props => props.value+0.5}deg );
+    }
+    `
+
 const Inner = styled(motion.div)`
-    width: 120px;
-    height: 120px;
+    width: var(--progress-in);
+    height: var(--progress-in);
     border-radius: 50%;
     
 
@@ -120,14 +112,6 @@ const Inner = styled(motion.div)`
     align-items: center;
 
     background: var(--theme);
-`
-const Circle = styled(motion.circle)`
-    fill: none;
-    stroke: var(--lines);
-    stroke-width: 20px;
-    stroke-dasharray: 440;
-    
-    box-shadow: 0 0 10px red;
 `
 
 

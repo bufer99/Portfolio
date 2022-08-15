@@ -8,10 +8,6 @@ body {
   font-family: Coolvetica, Arial, serif;
 }
 
-html, body, #root {
-  height: 100%;
-}
-
 :root {
   --fs-xxl: 3rem;
   --fs-xl: 2rem;
@@ -24,6 +20,11 @@ html, body, #root {
 
   --theme: #A2D2FF;
   --lines: #1C6DD0;
+
+
+  --progress-out: 300px;
+  --progress-in: 200px;
+  --skills-grid: 300px;
 }
 
 @media screen and (max-width: 1075px) {
@@ -34,6 +35,10 @@ html, body, #root {
     --fs-m: .8rem;
 
     --lh: 3px;
+
+    --progress-out: 225px;
+    --progress-in: 150px;
+    --skills-grid: 250px;
   }
 }
 
@@ -45,6 +50,10 @@ html, body, #root {
     --fs-m: .5rem;
 
     --lh: 2px;
+
+    --progress-out: 180px;
+    --progress-in: 120px;
+    --skills-grid: 200px;
   }
 
 }

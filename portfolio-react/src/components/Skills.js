@@ -39,7 +39,7 @@ const Content = styled.div`
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(var(--skills-grid), 1fr));
     grid-template-rows: repeat(auto-fit, minmax(160px, 1fr));
     gap: 20px;
 `

@@ -1,20 +1,15 @@
 import { motion } from "framer-motion"
-import { useEffect } from "react"
 import styled from "styled-components"
 
 
 export const BurgerNav = ({ toggle, isOpen }) => {
 
-    const first = {}
-    const second = {}
-    //transform: active && "rotate(45deg)", transformOrigin: active && "bottom left" 
-
     return (
         <Burger onClick={toggle} animate={isOpen ? "open" : "closed"}>
             <BurgerSpan
                 variants={{
-                    closed: { width: "40px", rotate: "0deg", transformOrigin: "bottom left", transition:{ duration: 0.3 }},
-                    open: { width: "40px", rotate: "40deg", transformOrigin: "top left", transition:{ duration: 0.3 }}
+                    closed: { width: "40px", rotate: "0deg", transformOrigin: "bottom left", transition: { duration: 0.3 } },
+                    open: { width: "40px", rotate: "40deg", transformOrigin: "top left", transition: { duration: 0.3 } }
                 }}
             > </BurgerSpan>
             <BurgerSpan
@@ -25,8 +20,8 @@ export const BurgerNav = ({ toggle, isOpen }) => {
             > </BurgerSpan>
             <BurgerSpan
                 variants={{
-                    closed: { width: "40px", rotate: "0deg", transformOrigin: "bottom left", transition:{ duration: 0.3 }},
-                    open: { width: "40px", rotate: "-40deg", transformOrigin: "bottom left", transition:{ duration: 0.3 }}
+                    closed: { width: "40px", rotate: "0deg", transformOrigin: "bottom left", transition: { duration: 0.3 } },
+                    open: { width: "40px", rotate: "-40deg", transformOrigin: "bottom left", transition: { duration: 0.3 } }
                 }}
             > </BurgerSpan>
         </Burger>

@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import Modal from '@mui/material/Modal';
-import gitLogo from '../media/github.svg';
-import reactLogo from '../media/react.svg';
-import jsLogo from '../media/js.svg';
-import linkLogo from '../media/external.svg';
 import { useState } from "react";
-import { motion, AnimatePresence, useCycle } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ScreenShots from "./ScreenShots";
 
 
@@ -62,10 +57,6 @@ const LogoFlex = styled.div`
 const ScreenShot = styled.img`
     height: 80%;
 `
-
-const Logo = styled(motion.img)`
-        height: 25%;
-        `
 
 const Title = styled.div`
                 font-family: Coolvetica, Arial, serif;

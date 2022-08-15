@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { AnimatedPage } from './AnimatedPage';
 import { useState } from "react";
 import { RepositoryItem } from "./RepositoryItem";
-import { Wrapper } from "./Wrapper";
 import { RepoItemCard } from "./RepoItemCard";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 

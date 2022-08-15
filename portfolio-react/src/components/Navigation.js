@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { useEffect, useState, useRef, useContext } from 'react'
-import { motion, AnimatePresence, useCycle } from "framer-motion"
-import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react'
+import { motion, useCycle } from "framer-motion"
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatedPage } from './AnimatedPage';
 import { BurgerNav } from './BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
@@ -20,7 +20,7 @@ export const Navigation = () => {
     console.log(location)
     const [clickOnMenu, setClick] = useState(false);
 
-    const isHome = location.pathname === '/';
+    const isHome = location.pathname !== '/';
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
@@ -48,14 +48,12 @@ export const Navigation = () => {
         return () => window.removeEventListener('resize', onResize);
     }, [])
 
-    const [selectedID, setSelectedID] = useState(null);
-
     return (
-        <Home layout prop={clickOnMenu || location.pathname !== '/' ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
+        <Home layout prop={clickOnMenu || isHome ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
             <NavWrapper layout
-                row={clickOnMenu || isColumn || location.pathname !== '/' ? '1' : '1 / span 2'}
-                align={clickOnMenu || isColumn || location.pathname !== '/'? 'start' : undefined}
-                bg={clickOnMenu || isColumn || location.pathname !== '/'? 'white' : undefined}
+                row={clickOnMenu || isColumn || isHome ? '1' : '1 / span 2'}
+                align={clickOnMenu || isColumn || isHome ? 'start' : undefined}
+                bg={clickOnMenu || isColumn || isHome ? 'white' : undefined}
             >
                 <BurgerContainer>
                     <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
@@ -108,12 +106,17 @@ const BurgerContainer = styled.div`
 `
 
 const Home = styled(motion.div)`
-  height: 100%;
+  height: 100vh;
   display: grid;
   grid-template-rows: min-content 1fr;
   grid-template-columns: 2fr minmax(0,1600px) 2fr;
   align-items: center;
   justify-content: center;
+  row-gap: 20px;
+  
+  @media screen and (max-width: 768px){
+        
+  }
 `
 const NavWrapper = styled(motion.div)`
     width: 100%;
