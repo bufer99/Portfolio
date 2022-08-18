@@ -1,5 +1,5 @@
 import './App.css';
-import { Navigation } from './components/Navigation';
+import { Layout } from './components/Layout';
 import {
   Routes,
   Route,
@@ -17,7 +17,7 @@ export default function App() {
   return (
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.key}>
-          <Route path="/" element={ <Navigation/>} >
+          <Route path="/" element={ <Layout/>} >
             <Route path="/aboutMe" element={<About/>} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/goals" element={<></>} />

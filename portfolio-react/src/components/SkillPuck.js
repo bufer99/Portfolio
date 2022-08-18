@@ -53,7 +53,7 @@ export const SkillPuck = ({ value, img }) => {
             viewport={{ once: true, amount: 0.8 }}
             variants={variants}
             value={percentage*3.6}
-            data-inView={inView}
+            data-inview={inView}
         >
             <Inner>
                 <Content>
