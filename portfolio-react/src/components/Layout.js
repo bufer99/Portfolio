@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useCycle } from "framer-motion"
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatedPage } from './AnimatedPage';
@@ -33,16 +33,16 @@ export const Layout = () => {
 
 
 
-    const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
+    //const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
     const [isColumn, setIsColumn] = useState(window.innerWidth <= 768);
     const [isOpen, toggleOpen] = useCycle(false, true);
 
     const click = (param) => (e) => {
 
         setClick(true)
-        const copy = [...itemtransition]
-        const index = e.target.closest('div').id;
-        setTransition(copy.map((e, i) => (Math.abs(index - i) + 1) / 10))
+        //const copy = [...itemtransition]
+        //const index = e.target.closest('div').id;
+        //setTransition(copy.map((e, i) => (Math.abs(index - i) + 1) / 10))
         setTimeout(() => navigate(`/${param}`), 300)
     }
 
@@ -56,13 +56,16 @@ export const Layout = () => {
         <Home layout prop={clickOnMenu || !isHome ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
             <NavWrapper
                 id='NavWrapper'
-                layout
-                row={clickOnMenu || isColumn || !isHome ? '1' : '1 / span 2'}
-                align={clickOnMenu || isColumn || !isHome ? 'start' : undefined}
-                bg={clickOnMenu || isColumn || !isHome ? 'white' : undefined}
+                layout = {!isColumn}
+                row={ (clickOnMenu && !isColumn) || !isHome ? '1' : '1 / span 2'}
+                align={ (clickOnMenu && !isColumn) || !isHome ? 'start' : undefined}
+                bg={ (clickOnMenu && !isColumn) || !isHome ? 'white' : undefined}
             >
 
-                <BurgerContainer id='burgerContainer'>
+                <BurgerContainer
+                    id='burgerContainer'
+                    display={!isHome && isColumn ? 'flex' : undefined}
+                >
                     <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
                 </BurgerContainer>
 
@@ -71,11 +74,10 @@ export const Layout = () => {
                     variants={sideMenuVariants}
                 />
 
-                <Navigation click={click} menuItems={menuItems} location={location} />
+                <Navigation display={isHome && isColumn} click={click} menuItems={menuItems} location={location} />
 
             </NavWrapper>
             <AnimatedPage>
-                {/*isHome && isColumn && <Navigation mobile={true} click={click} menuItems={menuItems} location={location} />*/}
                 <Outlet />
             </AnimatedPage>
         </Home>
@@ -86,7 +88,7 @@ const BurgerContainer = styled.div`
     width: fit-content;
     display: none;
     @media screen and (max-width: 768px){
-        display: flex;
+        display: ${props => props.display}
     }
 `
 

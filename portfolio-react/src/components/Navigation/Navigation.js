@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Navigation = ({menuItems, click, location, mobile}) => {
+export const Navigation = ({menuItems, click, location, display}) => {
 
     return (
         <Nav
             layout
-            display = { mobile ? undefined : "none"}
+            display = { display ? undefined : "none"}
         >
             {menuItems.map((e, i) => {
                 const key = Object.keys(e)[0];
