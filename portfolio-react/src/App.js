@@ -5,8 +5,8 @@ import {
   Route,
   useLocation
 } from 'react-router-dom';
-import { References } from './components/References';
-import { Skills } from './components/Skills';
+import { References } from './components/References/References';
+import { Skills } from './components/Skills/Skills';
 import { About } from './components/About';
 import { AnimatePresence } from "framer-motion"
 

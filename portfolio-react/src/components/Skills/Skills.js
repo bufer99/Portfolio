@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useRef } from "react";
-import reactLogo from '../media/react.svg';
-import jsLogo from '../media/js.svg';
-import dataBaseLogo from '../media/database.svg';
-import cssLogo from '../media/css3.svg';
-import gitLogo from '../media/git.svg';
-import htmlLogo from '../media/html5.svg';
+import reactLogo from '../../media/react.svg';
+import jsLogo from '../../media/js.svg';
+import dataBaseLogo from '../../media/database.svg';
+import cssLogo from '../../media/css3.svg';
+import gitLogo from '../../media/git.svg';
+import htmlLogo from '../../media/html5.svg';
 import { SkillPuck } from "./SkillPuck";
 
 const stack = [

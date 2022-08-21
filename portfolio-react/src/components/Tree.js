@@ -9,8 +9,6 @@ export const Tree = () => {
             animate={{}}
             whileHover=""
             whileTap=""
-            width="440"
-            height="440"
             onClick={() => { }}
         >
             <motion.line
@@ -30,10 +28,14 @@ export const Tree = () => {
                 stroke="black"
                 strokeWidth={50}
             />
+
+            <motion.path d="M 200 0 A 25 25 0 0 1 50 0" stroke="red" fill="transparent" strokeWidth={25}/>
+                                {/**A rx ry x-axis-rotation large-arc-flag sweep-flag x y*/}
         </SVG>
     )
 }
 const SVG = styled(motion.svg)`
-    
-  
+    height: 100%;  
+    width: 100%;
+
 `

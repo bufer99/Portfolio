@@ -1,8 +1,0 @@
-
-
-
-export const LandingMobile = () => {
-    return (
-        <></>
-    )
-}

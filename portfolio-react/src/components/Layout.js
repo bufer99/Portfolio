@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { motion, useCycle } from "framer-motion"
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatedPage } from './AnimatedPage';
-import { BurgerNav } from './BurgerNav';
+import { BurgerNav } from './Navigation/mobile/BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
 import { Navigation } from './Navigation/Navigation';
 
