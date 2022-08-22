@@ -6,6 +6,7 @@ import { AnimatedPage } from './AnimatedPage';
 import { BurgerNav } from './Navigation/mobile/BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
 import { Navigation } from './Navigation/Navigation';
+import { LanguageToggler } from './Navigation/LanguageToggler';
 
 const menuItems = [{ 'Magamról': 'aboutMe' },
 { 'Skills': 'skills' },
@@ -54,6 +55,7 @@ export const Layout = () => {
 
     return (
         <Home layout prop={clickOnMenu || !isHome ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
+            <LanguageToggler />
             <NavWrapper
                 id='NavWrapper'
                 layout = {!isColumn}
@@ -100,6 +102,12 @@ const Home = styled(motion.div)`
   align-items: center;
   justify-content: center;
   row-gap: 20px;
+
+  & > div:first-of-type{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
   
   @media screen and (max-width: 768px){
         

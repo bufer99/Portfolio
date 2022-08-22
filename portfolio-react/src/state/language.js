@@ -2,8 +2,8 @@ export const languages = {
     hu: {
         'aboutMe': 'Magamról',
         'hobbies': 'Hobbik',
-        'skills': 'Programnyelvek',
-        'goals': 'Amit kéne',
+        'skills': 'Prog. nyelvek',
+        'goals': 'Célok',
         'references': 'Projektek',
     },
 
@@ -12,6 +12,6 @@ export const languages = {
         'hobbies': 'Hobbies',
         'skills': 'Skills',
         'goals': 'Goals',
-        'references': 'My projects',
+        'references': 'Projects',
     }
 }

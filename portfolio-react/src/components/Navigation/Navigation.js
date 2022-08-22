@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { getLanguage } from "../../state/langSlice";
 
 export const Navigation = ({menuItems, click, location, display}) => {
+
+    const { code, words } = useSelector(getLanguage);
 
     return (
         <Nav
@@ -18,7 +22,7 @@ export const Navigation = ({menuItems, click, location, display}) => {
                         key={key}
                         onClick={click(value)}
                     >
-                        {key}
+                        {words[value]}
                     </Item>
                 )
             })}
