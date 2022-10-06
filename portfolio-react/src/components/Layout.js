@@ -64,6 +64,7 @@ export const Layout = () => {
                 layout={!isColumn}
                 row={(clickOnMenu && !isColumn) || !isHome ? '1' : '1 / span 2'}
                 align={(clickOnMenu && !isColumn) || !isHome ? 'start' : undefined}
+                bg={isColumn && isHome ? 'undefined' : 'white'}
             >
                 <BurgerContainer
                     id='burgerContainer'
@@ -71,8 +72,10 @@ export const Layout = () => {
                 >
                     <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
                 </BurgerContainer>
+
                 <div className='mobileNav' style={{ fontSize:'1.5rem' }} >{words.navigation[location.pathname.slice(1)]}</div>
-                <div id="toggler"><LanguageToggler /></div>
+                {!isHome && <div id="toggler"><LanguageToggler /></div>}
+
                 <SideMenu
                     animate={isOpen ? "open" : "closed"}
                     variants={sideMenuVariants}
@@ -117,7 +120,7 @@ const NavWrapper = styled(motion.div)`
     justify-content: space-between;
     align-items: center;
 
-    background: ${props => props.bg} ;
+    
     transition: background 500ms;
     padding-bottom: 5px;
 
@@ -134,7 +137,7 @@ const NavWrapper = styled(motion.div)`
 
     @media screen and (max-width: 850px){
         position: absolute;
-        background: white;
+        background: ${props => props.bg};
     }
 `
 
