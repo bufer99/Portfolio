@@ -6,6 +6,9 @@ import dataBaseLogo from '../../media/database.svg';
 import cssLogo from '../../media/css3.svg';
 import gitLogo from '../../media/git.svg';
 import htmlLogo from '../../media/html5.svg';
+import TSLogo from '../../media/typescript.svg';
+import laravelLogo from '../../media/laravel.svg';
+import phpLogo from '../../media/php.svg';
 import { SkillPuck } from "./SkillPuck";
 
 const stack = [
@@ -15,6 +18,9 @@ const stack = [
     [gitLogo, 7],
     [htmlLogo, 7],
     [reactLogo, 8.5],
+    [TSLogo, 4],
+    [laravelLogo, 3],
+    [phpLogo, 3]
 ]
 
 
@@ -35,7 +41,7 @@ export const Skills = () => {
 
 const Content = styled.div`
     width: 100%;
-    margin: 0 auto;
+    margin: 60px auto;
     display: grid;
     justify-items: center;
     align-items: center;

@@ -14,7 +14,6 @@ import reduxLogo from '../../../media/redux.svg';
 
 import { SideMenuItem as Item } from "./SideMenuItem";
 import { useNavigate } from "react-router-dom";
-import { LanguageToggler } from "../LanguageToggler";
 import { useSelector } from 'react-redux'
 import { getLanguage } from "../../../state/langSlice";
 
@@ -34,7 +33,7 @@ const getRandomLogo = () => {
 export const SideMenu = ({ animate, variants }) => {
 
     const { code, words } = useSelector(getLanguage);
-
+    
     const navigate = useNavigate();
     console.log(animate)
     console.log(variants)
@@ -45,11 +44,10 @@ export const SideMenu = ({ animate, variants }) => {
             variants={variants}
         >
             <Flex>
-                <Item><LanguageToggler /></Item>
-                <Item navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words["aboutMe"]} />
-                <Item navigate={() => navigate("/goals")} src={goalsIcon} text={words["goals"]} />
-                <Item navigate={() => navigate("/skills")} src={getRandomLogo()} text={words["skills"]} />
-                <Item navigate={() => navigate("/references")} src={projectIcon} text={words["references"]} />
+                <Item navigate={() => navigate("/aboutMe")} src={aboutIcon} text={words.navigation["aboutMe"]} />
+                <Item navigate={() => navigate("/goals")} src={goalsIcon} text={words.navigation["goals"]} />
+                <Item navigate={() => navigate("/skills")} src={getRandomLogo()} text={words.navigation["skills"]} />
+                <Item navigate={() => navigate("/references")} src={projectIcon} text={words.navigation["references"]} />
             </Flex>
         </Wrapper>
     )

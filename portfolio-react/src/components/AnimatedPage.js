@@ -26,7 +26,7 @@ export const AnimatedPage = ({children}) => {
 
 
 const Wrapper = styled(motion.div)`
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 850px){
         margin-top: 60px;
     }
     grid-row: 2;

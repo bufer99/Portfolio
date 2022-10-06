@@ -63,7 +63,7 @@ const Card = styled(motion.div)`
     display: flex;
     flex-direction: column;
 
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 850px){
         top: 20%;
         bottom: 20%;
         left: 5%;

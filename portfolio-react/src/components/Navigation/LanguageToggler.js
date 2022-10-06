@@ -38,7 +38,7 @@ const Item = styled.div`
     font-family: 'DM Mono', monospace;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: var(--fs-m);
+    font-size: 1.2rem;
     border: ${props => props.active};
     border-radius: 25%;
     padding: 5px;

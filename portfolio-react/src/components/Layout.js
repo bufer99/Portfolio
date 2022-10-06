@@ -7,11 +7,16 @@ import { BurgerNav } from './Navigation/mobile/BurgerNav';
 import { SideMenu } from './Navigation/mobile/SideMenu';
 import { Navigation } from './Navigation/Navigation';
 import { LanguageToggler } from './Navigation/LanguageToggler';
+import { getLanguage } from '../state/langSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const menuItems = [{ 'Magamról': 'aboutMe' },
 { 'Skills': 'skills' },
 { 'Célok': 'goals' },
 { 'Projektek': 'references' }];
+
+const MOBILEBREAKPOINT = 850;
 
 const sideMenuVariants = {
     closed: { width: "0", transition: { duration: 0.2 } },
@@ -22,20 +27,19 @@ export const Layout = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location)
+    
     const [clickOnMenu, setClick] = useState(false);
+    const { words } = useSelector(getLanguage);
 
     const isHome = location.pathname === '/';
 
     //ezt lehet ki kell szervezni
     const onResize = () => {
-        setIsColumn(window.innerWidth <= 768)
+        setIsColumn(window.innerWidth <= MOBILEBREAKPOINT)
     }
 
-
-
     //const [itemtransition, setTransition] = useState(Array(menuItems.length).fill(0));
-    const [isColumn, setIsColumn] = useState(window.innerWidth <= 768);
+    const [isColumn, setIsColumn] = useState(window.innerWidth <= MOBILEBREAKPOINT);
     const [isOpen, toggleOpen] = useCycle(false, true);
 
     const click = (param) => (e) => {
@@ -55,22 +59,20 @@ export const Layout = () => {
 
     return (
         <Home layout prop={clickOnMenu || !isHome ? '1fr' : 'minmax(100px, 1fr) 1fr'}>
-            <LanguageToggler />
             <NavWrapper
                 id='NavWrapper'
-                layout = {!isColumn}
-                row={ (clickOnMenu && !isColumn) || !isHome ? '1' : '1 / span 2'}
-                align={ (clickOnMenu && !isColumn) || !isHome ? 'start' : undefined}
-                bg={ (clickOnMenu && !isColumn) || !isHome ? 'white' : undefined}
+                layout={!isColumn}
+                row={(clickOnMenu && !isColumn) || !isHome ? '1' : '1 / span 2'}
+                align={(clickOnMenu && !isColumn) || !isHome ? 'start' : undefined}
             >
-
                 <BurgerContainer
                     id='burgerContainer'
                     display={!isHome && isColumn ? 'flex' : undefined}
                 >
                     <BurgerNav isOpen={isOpen} toggle={() => toggleOpen()} />
                 </BurgerContainer>
-
+                <div className='mobileNav' style={{ fontSize:'1.5rem' }} >{words.navigation[location.pathname.slice(1)]}</div>
+                <div id="toggler"><LanguageToggler /></div>
                 <SideMenu
                     animate={isOpen ? "open" : "closed"}
                     variants={sideMenuVariants}
@@ -89,7 +91,7 @@ export const Layout = () => {
 const BurgerContainer = styled.div`
     width: fit-content;
     display: none;
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 850px){
         display: ${props => props.display}
     }
 `
@@ -102,16 +104,6 @@ const Home = styled(motion.div)`
   align-items: center;
   justify-content: center;
   row-gap: 20px;
-
-  & > div:first-of-type{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-  
-  @media screen and (max-width: 768px){
-        
-  }
 `
 const NavWrapper = styled(motion.div)`
     width: 100%;
@@ -121,13 +113,28 @@ const NavWrapper = styled(motion.div)`
     grid-row: ${props => props.row};
     grid-column: 1 / span 3;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     background: ${props => props.bg} ;
     transition: background 500ms;
     padding-bottom: 5px;
 
-    @media screen and (max-width: 768px){
+    @media screen and (min-width: 851px){
+        & .mobileNav {
+            display: none;
+        }
+        & #toggler{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+    }
+
+    @media screen and (max-width: 850px){
         position: absolute;
-        background: ${props => props.bg};
+        background: white;
     }
 `
 

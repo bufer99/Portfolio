@@ -22,7 +22,7 @@ export const Navigation = ({menuItems, click, location, display}) => {
                         key={key}
                         onClick={click(value)}
                     >
-                        {words[value]}
+                        {words.navigation[value]}
                     </Item>
                 )
             })}
@@ -43,7 +43,7 @@ const Nav = styled(motion.nav)`
 
     gap: 8vh;
     
-    @media screen and (max-width: 768px){
+    @media screen and (max-width: 850px){
         flex-direction: column;
         display: ${props => props.display};
     }
@@ -51,7 +51,7 @@ const Nav = styled(motion.nav)`
 `
 const Item = styled(motion.div)`
 
-    font-size: var(--fs-xl);
+    font-size: var(--fs-nav);
     position: relative;
     transition: all 200ms ease-in-out;
     padding: 0 10px;
