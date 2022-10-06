@@ -19,7 +19,7 @@ const Slider = ({ activeImg }) => {
         <AnimatePresence mode={"wait"}>
             <motion.div>
                 <Img
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', height: '100%' }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -63,22 +63,18 @@ export const About = () => {
         </Flex>
     )
 }
-/**
- * Langó András 22 éves vagyok, <span id={city}>Budaörsön</span> élek. 2019-óta járok az <span id={education} >ELTE-IK</span> programtervező informatikus képzésére.
-   Előtte nem programoztam. 2021-ben döntöttem el hogy a webfejlesztéssel akarok foglalkozni. Hosszú távon fullstack programozóként képzelném el magam.
-   Szeretek sportolni, jelenleg egy térdsérülésből épülök ezért csak az edzőteremre korlátozódtam egy darabig.
-   2021-ben elvégeztem a labdarúgó <span id={referee}>játékvezetői</span> képzést. Szabadidőmben programozok, próbálom bővíteni a tudásom.
-                     */
 
 const Flex = styled.div`
     display: flex;
     gap: 10px;
     width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
 
     @media screen and (max-width: 850px){
         flex-direction: column-reverse;
+        justify-content: start;
     }
 `
 
@@ -118,6 +114,10 @@ const Left = styled.div`
     font-size: 30px;
     width: 30%;
     min-width: 360px;
+
+    @media screen and (max-width: 850px){
+        height: 300px;
+    }
 
     @media screen and (max-width: 370px){
         min-width: 300px;
