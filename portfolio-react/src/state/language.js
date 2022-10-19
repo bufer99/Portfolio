@@ -3,7 +3,7 @@ export const languages = {
         navigation: {
             'aboutMe': 'Magamról',
             'skills': 'Stack',
-            'goals': 'Célok',
+            //'goals': 'Célok',
             'references': 'Projektek',
         },
         about: {
@@ -25,7 +25,7 @@ export const languages = {
         navigation: {
             'aboutMe': 'About me',
             'skills': 'Stack',
-            'goals': 'Goals',
+            //'goals': 'Goals',
             'references': 'Projects',
         },
         about: {
