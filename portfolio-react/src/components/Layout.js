@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const menuItems = [{ 'Magamról': 'aboutMe' },
 { 'Skills': 'skills' },
-{ 'Célok': 'goals' },
+//{ 'Célok': 'goals' },
 { 'Projektek': 'references' }];
 
 const MOBILEBREAKPOINT = 850;
